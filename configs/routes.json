@@ -1,0 +1,12 @@
+{
+	"^genres/$":
+	{
+		"get": "genres:getAction",
+		"post": "genres:addAction"
+	},
+	"^genres/\\d+$":
+	{
+		"put": "genres:updateAction",
+		"delete": "genres:deleteAction"
+	}
+}

@@ -1,0 +1,14 @@
+<div id="genres-cont">
+	<div id="genres-list-options">
+	    <button id="show-add-genre-form">Add Genre</button>
+	    <span><%= genreCount %> <% if (genreCount === 1) { %>genre<% } else { %>genres<% } %></span>
+	</div>
+
+	<div class="clear"></div>
+
+	<% if (genreCount > 0){ %>
+	        <ul id="genres-list"></ul>
+	<% } else { %>
+	        <p>No genres yet</p>
+	<% } %>
+</div>

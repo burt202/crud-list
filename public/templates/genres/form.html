@@ -1,0 +1,17 @@
+<h2><%= title %></h2>
+<br />
+
+<form method="post" id="genre-form" data-form-type="<%= action %>">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" value="<%= name %>" />
+    </div>
+    <div id="form-actions">
+        <% if (action === 'add') { %>
+            <button id="add-genre-btn">Add</button>
+        <% } else { %>
+            <button id="update-genre-btn">Update</button>
+        <% } %>
+        <button id="cancel-btn">Cancel</button>
+    </div>
+</form>

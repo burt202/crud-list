@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Node App v2</title>
+		{% if envType === 'development' or urlOverride %}
+			<link href="/css/" rel="stylesheet" type="text/css">
+		{% else %}
+			<link href="/build/combined.css" rel="stylesheet" type="text/css">
+		{% endif %}
+	</head>
+	<body>
+		<div id="main">
+			<div id="navigation"></div>
+			<div id="content"></div>
+		</div>
+
+		{% if envType === 'development' or urlOverride %}
+			<script data-main="/js/common" src="/js/libs/require.js" type="text/javascript"></script>
+		{% else %}
+			<script src="/js/libs/require.js" type="text/javascript"></script>
+			<script src="/build/combined.js" type="text/javascript"></script>
+		{% endif %}
+	</body>
+</html>
