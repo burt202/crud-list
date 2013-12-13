@@ -2,11 +2,11 @@
 	"^genres/$":
 	{
 		"get": "genres:getAction",
-		"post": "genres:addAction"
+		"post": "genres:postAction"
 	},
 	"^genres/[a-z0-9]+$":
 	{
-		"put": "genres:updateAction",
+		"put": "genres:putAction",
 		"delete": "genres:deleteAction"
 	}
 }

@@ -3,7 +3,7 @@ var mongodb = require('mongodb');
 var GenresService = function (db) {
 	this.db = db;
 
-	this.getGenres = function (callback) {
+	this.get = function (callback) {
 		this.db.collection('genres', function(err, collection) {
 			collection.find().toArray(function(err, data) {
 				callback(data);
@@ -11,7 +11,23 @@ var GenresService = function (db) {
 		});
 	};
 
-	this.deleteGenre = function (id, callback) {
+	this.add = function (data, callback) {
+		this.db.collection('genres', function(err, collection) {
+			collection.insert({name: data.name}, function (err, result) {
+				callback(data);
+			});
+		});
+	};
+
+	this.update = function (id, data, callback) {
+		this.db.collection('genres', function(err, collection) {
+			collection.update({_id: id}, {name: data.name}, function (err, result) {
+				callback(data);
+			});
+		});
+	};
+
+	this.delete = function (id, callback) {
 		this.db.collection('genres', function(err, collection) {
 			collection.remove({_id: new mongodb.ObjectID(id)}, function(err, numberOfRemovedDocs) {
 				callback();

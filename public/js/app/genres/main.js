@@ -61,6 +61,33 @@ define([
             });
         }, this);
 
+        vent.on('add:genre', function (model, properties, formElement) {
+            model.save(properties, {
+                wait: true,
+                success: function (model, response) {
+                    genreCollection.add(model);
+                    genresFormView.hideForm();
+                    Helpers.showNotificationMessage('success', 'Genre Added');
+                },
+                error: function (model, response) {
+                    Helpers.showValidationErrors(formElement, $.parseJSON(response.responseText));
+                }
+            });
+        }, this);
+
+        vent.on('update:genre', function (model, properties, formElement) {
+            model.save(properties, {
+                wait: true,
+                success: function (model, response) {
+                    genresFormView.hideForm();
+                    Helpers.showNotificationMessage('success', 'Genre Updated');
+                },
+                error: function (model, response) {
+                    Helpers.showValidationErrors(formElement, $.parseJSON(response.responseText));
+                }
+            });
+        }, this);
+
         this.showForm  = function (model) {
             if (genresFormView) {
                 genresFormView.remove();
