@@ -4,7 +4,7 @@
 		"get": "genres:getAction",
 		"post": "genres:addAction"
 	},
-	"^genres/\\d+$":
+	"^genres/[a-z0-9]+$":
 	{
 		"put": "genres:updateAction",
 		"delete": "genres:deleteAction"

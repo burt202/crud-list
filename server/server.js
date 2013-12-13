@@ -40,6 +40,7 @@ var ServerController = function (rootPath, config, routes, db) {
 		var method = req.method.toLowerCase(),
 			endpoint = req.url.substring(5, req.url.length), // strip off '/api/'
 			handlerString = null,
+			urlId = endpoint.split('/')[1],
 			pattern, routeObj, handlerSplit, controllerName, functionName, handler;
 
 		for (route in this.routes) {
@@ -63,7 +64,7 @@ var ServerController = function (rootPath, config, routes, db) {
 			controllerName = handlerSplit[0];
 			functionName = handlerSplit[1];
 			handler = require(__dirname + '/api/' + controllerName);
-			handler[functionName](req, res, this.db);
+			handler[functionName](req, res, this.db, urlId);
 		} else {
 			res.set('Content-Type', 'application/json');
 			res.send(400, {

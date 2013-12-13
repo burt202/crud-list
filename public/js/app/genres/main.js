@@ -2,8 +2,9 @@ define([
     'backbone',
     'app/shared/eventAggregator',
     'app/genres/content',
-    'app/genres/form'
-    ], function (Backbone, vent, GenresContView, GenresFormView) {
+    'app/genres/form',
+    'app/shared/helpers'
+    ], function (Backbone, vent, GenresContView, GenresFormView, Helpers) {
 
     return function (callback) {
     	var GenreModel,
@@ -41,6 +42,23 @@ define([
             });
 
             this.showForm(model);
+        }, this);
+
+        vent.on('delete:genre', function (model) {
+            if (!confirm('Are you sure you want to delete ' + model.get('name') + '?')) {
+                return;
+            }
+
+            if (genresFormView) {
+                genresFormView.hideForm();
+            }
+
+            model.destroy({
+                wait: true,
+                success: function (model, response) {
+                    Helpers.showNotificationMessage('success', 'Genre Deleted');
+                },
+            });
         }, this);
 
         this.showForm  = function (model) {

@@ -11,5 +11,17 @@ module.exports = {
 				data: data
 			});
 	    });
+	},
+
+	deleteAction: function (req, res, db, id) {
+		var genresService = new GenresService(db);
+		genresService.deleteGenre(id, function () {
+			res.set('Content-Type', 'application/json');
+			res.send(200, {
+				state: 'success',
+				message: 'Genre Deleted',
+				data: {}
+			});
+		});
 	}
 };

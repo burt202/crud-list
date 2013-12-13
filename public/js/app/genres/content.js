@@ -16,6 +16,7 @@ define([
 
 	    initialize: function () {
 	        _.bindAll(this, 'render', 'showAddGenreForm');
+	        this.collection.on('add remove', this.render);
 	    },
 
 	    render: function () {
