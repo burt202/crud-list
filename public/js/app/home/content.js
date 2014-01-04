@@ -1,20 +1,10 @@
 define([
-	'jquery',
 	'underscore',
-	'backbone',
+	'marionette',
 	'text!templates/home/content.html',
-	], function ($, _, Backbone, tpl) {
+], function (_, Marionette, tpl) {
 
-	return Backbone.View.extend({
-	    template: _.template(tpl),
-
-	    initialize: function () {
-	        _.bindAll(this, 'render');
-	    },
-
-	    render: function () {
-	        $(this.el).html(this.template({}));
-	        return this;
-	    }
+	return Marionette.ItemView.extend({
+	    template: _.template(tpl)
 	});
 });

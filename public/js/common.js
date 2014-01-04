@@ -11,11 +11,16 @@ requirejs.config({
 		backbone: {
 			deps: ['underscore', 'jquery'],
 			exports: 'Backbone'
-		}
+		},
+        marionette: {
+            deps: ['backbone'],
+            exports: 'Backbone.Marionette'
+        }
 	}
 });
 
-require(['backbone', 'app/router'], function (Backbone, Router) {
-    var router = new Router();
-    Backbone.history.start();
+require([
+	'app/app'
+], function (App) {
+	App.start();
 });

@@ -1,12 +1,11 @@
 define([
-	'jquery',
 	'underscore',
-	'backbone',
-	'app/shared/eventAggregator',
+	'marionette',
+	'app/shared/vent',
 	'text!templates/genres/list-item.html'
-	], function ($, _, Backbone, vent, tpl) {
+], function (_, Marionette, Vent, tpl) {
 
-	return Backbone.View.extend({
+	return Marionette.ItemView.extend({
 	    tagName: 'li',
 	    template: _.template(tpl),
 
@@ -15,24 +14,18 @@ define([
 	        'click .delete-genre-btn': 'deleteGenre'
 	    },
 
-	    initialize: function () {
-	        _.bindAll(this, 'render', 'showEditGenreForm', 'deleteGenre');
-	        this.model.on('change', this.render);
-	    },
-
-	    render: function () {
-	        $(this.el).html(this.template(this.model.toJSON()));
-	        return this;
-	    },
+        modelEvents: {
+            'change': 'render'
+        },
 
 	    showEditGenreForm: function (e) {
 	        e.preventDefault();
-			vent.trigger('edit:genre', this.model);
+			Vent.trigger('edit:genre', this.model);
 	    },
 
 	    deleteGenre: function (e) {
 	        e.preventDefault();
-	        vent.trigger('delete:genre', this.model);
+	        Vent.trigger('delete:genre', this.model);
 	    }
 	});
 });

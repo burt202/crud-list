@@ -1,12 +1,12 @@
 define([
 	'jquery',
 	'underscore',
-	'backbone',
-	'app/shared/eventAggregator',
+	'marionette',
+	'app/shared/vent',
 	'text!templates/genres/form.html'
-	], function ($, _, Backbone, vent, tpl) {
+], function ($, _, Marionette, Vent, tpl) {
 
-	return Backbone.View.extend({
+	return Marionette.ItemView.extend({
 	    id: 'genre-form-container',
 	    template: _.template(tpl),
 
@@ -16,35 +16,38 @@ define([
 	        'click #cancel-btn': 'hideFormEvent'
 	    },
 
+		ui: {
+			nameInput: '#name'
+		},
+
 	    initialize: function () {
-	        _.bindAll(this, 'render', 'addGenre', 'updateGenre', 'hideFormEvent', 'hideForm');
 	        this.render();
 	    },
 
 	    render: function () {
-	        $(this.el).html(this.template(this.model.toJSON()));
+	        this.$el.html(this.template(this.model.toJSON()));
 	        $('#content').prepend(this.el);
-	        $(this.el).slideDown();
+	        this.$el.slideDown();
 	    },
 
 		addGenre: function (e) {
 			e.preventDefault();
 
 			var properties = {
-				name: $('#name').val()
+				name: $(this.ui.nameInput).val()
 			};
 
-			vent.trigger('add:genre', this.model, properties, $(this.el));
+			Vent.trigger('add:genre', this.model, properties, this.$el);
 		},
 
 		updateGenre: function (e) {
 			e.preventDefault();
 
 			var properties = {
-				name: $('#name').val()
+				name: $(this.ui.nameInput).val()
 			};
 
-			vent.trigger('update:genre', this.model, properties, $(this.el));
+			Vent.trigger('update:genre', this.model, properties, this.$el);
 		},
 
 	    hideFormEvent: function (e) {
@@ -55,8 +58,8 @@ define([
 	    hideForm: function () {
 	        var that = this;
 
-	        $(that.el).slideUp(400, function () {
-	            $(that.el).hide();
+	        this.$el.slideUp(400, function () {
+	            that.$el.hide();
 	            that.remove();
 	        });
 	    }

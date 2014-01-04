@@ -1,6 +1,6 @@
 define([
     'jquery',
-    ], function ($) {
+], function ($) {
 
     return {
         showValidationErrors: function (element, errorObj) {

@@ -1,9 +1,8 @@
 define([
     'app/home/content',
-    ], function (HomeContView) {
+], function (HomeContView) {
 
     return function (callback) {
-
         var homeContView = new HomeContView();
         callback(homeContView);
     }

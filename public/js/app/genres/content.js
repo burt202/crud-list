@@ -1,43 +1,35 @@
 define([
-	'jquery',
 	'underscore',
-	'backbone',
-	'app/shared/eventAggregator',
+	'marionette',
 	'text!templates/genres/content.html',
-	'./list-item'
-	], function ($, _, Backbone, vent, tpl, GenresListItemView) {
+	'app/shared/vent',
+	'app/genres/list-item'
+], function (_, Marionette, tpl, Vent, GenresListItemView) {
 
-	return Backbone.View.extend({
-	    template: _.template(tpl),
+	return Marionette.CompositeView.extend({
+        template: _.template(tpl),
+        itemViewContainer: '#genres-list',
+        itemView: GenresListItemView,
 
 	    events: {
 	        'click #show-add-genre-form': 'showAddGenreForm'
 	    },
 
-	    initialize: function () {
-	        _.bindAll(this, 'render', 'showAddGenreForm');
-	        this.collection.on('add remove', this.render);
-	    },
+        emptyView: Marionette.ItemView.extend({
+            render: function () {
+                this.$el.html('<li>No items</li>');
+            }
+        }),
 
-	    render: function () {
-	        var list,
-	            data = {
-	                genreCount: this.collection.length
-	            };
-
-	        $(this.el).html(this.template(data));
-	        list = $(this.el).find('ul#genres-list');
-
-	        _.each(this.collection.models, function (model) {
-	            list.append(new GenresListItemView({model: model}).render().el);
-	        });
-
-	        return this;
-	    },
+        serializeData: function () {
+            return {
+                genreCount: this.collection.length
+            };
+        },
 
 	    showAddGenreForm: function (e) {
 	        e.preventDefault();
-	        vent.trigger('new:genre');
+	        Vent.trigger('new:genre');
 	    }
-	});
+    });
 });

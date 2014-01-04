@@ -1,10 +1,9 @@
 define([
     'jquery',
     'backbone',
-    'app/shared/navigation',
     'app/home/main',
     'app/genres/main'
-    ], function ($, Backbone, NavigationView, HomeMain, GenresMain) {
+], function ($, Backbone, HomeMain, GenresMain) {
 
     return Backbone.Router.extend({
         routes: {
@@ -12,23 +11,22 @@ define([
             'genres': 'genres',
         },
 
-		initialize: function () {
-            this.navigationView = new NavigationView();
-            $('#navigation').html(this.navigationView.render().el);
-		},
+        initialize: function (options) {
+            this.navigation = options.navigation;
+        },
 
         home: function () {
-        	this.navigationView.setActive('home');
+            this.navigation.setActive('home');
 
-            var homeMain = new HomeMain(function (view) {
+            new HomeMain(function (view) {
                 $('#content').html(view.render().el);
             });
         },
 
         genres: function () {
-            this.navigationView.setActive('genres');
+            this.navigation.setActive('genres');
 
-            var genresMain = new GenresMain(function (view) {
+            new GenresMain(function (view) {
                 $('#content').html(view.render().el);
             });
         }
