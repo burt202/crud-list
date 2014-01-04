@@ -21,7 +21,7 @@ var GenresService = function (db) {
 
 	this.update = function (id, data, callback) {
 		this.db.collection('genres', function(err, collection) {
-			collection.update({_id: id}, {name: data.name}, function (err, result) {
+			collection.update({_id: new mongodb.ObjectID(id)}, {name: data.name}, function (err, result) {
 				callback(data);
 			});
 		});

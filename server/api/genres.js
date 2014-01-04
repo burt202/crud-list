@@ -58,7 +58,7 @@ module.exports = {
 		} else {
 			newData.name = name;
 
-			genresService.update(req.params.id, newData, function (data) {
+			genresService.update(id, newData, function (data) {
 				res.set('Content-Type', 'application/json');
 				res.send(200, {
 					state: 'success',
