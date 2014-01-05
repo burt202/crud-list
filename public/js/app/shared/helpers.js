@@ -20,19 +20,32 @@ define([
         },
 
         showNotificationMessage: function (type, message) {
-            if ($('.notification').length > 0) {
+            var notificationHeight = 40,
+                notificationMargin = 10,
+                maxNumber = 5,
+                notificationLength = $('.notification').length,
+                pixelsFromTop = ((notificationLength + 1) * (notificationHeight + notificationMargin)) - notificationHeight,
+                notificationElement = $('<div />', {
+                    class: 'notification notification-' + type,
+                    html: message
+                });
+
+            if (notificationLength >= maxNumber) {
                 return;
             }
 
-            $('body').prepend('<div class="notification notification-' + type + '">' + message + '</div>');
-            $('.notification').animate({
-                top: '10px',
+            $('body').prepend(notificationElement);
+            notificationElement.animate({
+                top: pixelsFromTop + 'px',
             }, 300, function () {
                 setTimeout(function () {
-                    $('.notification').animate({
-                        top: '-50px',
+                    notificationElement.animate({
+                        top: '-' + notificationHeight + 'px',
                     }, 300, function () {
                         $(this).remove();
+                        $('.notification').animate({
+                            top: '-='+ (notificationHeight + notificationMargin) + 'px'
+                        }, 300);
                     });
                 }, 5000);
             });
