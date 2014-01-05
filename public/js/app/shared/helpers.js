@@ -3,15 +3,15 @@ define([
 ], function ($) {
 
     return {
-        showValidationErrors: function (element, errorObj) {
-            $.each(errorObj.data, function (field, message) {
-                var fieldObj = element.find('#' + field);
+        showValidationErrors: function (element, errors) {
+            $.each(errors, function (index, errorObj) {
+                var fieldObj = element.find('#' + errorObj.field);
 
                 if ($(fieldObj).siblings('.error').length > 0) {
                     return;
                 }
 
-                $('<p class="error">' + message + '</p>').insertAfter(fieldObj);
+                $('<p class="error">' + errorObj.message + '</p>').insertAfter(fieldObj);
 
                 fieldObj.on('focus', function () {
                     $(this).next('.error').remove();

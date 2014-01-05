@@ -21,10 +21,7 @@ define([
         GenreCollection = Backbone.Collection.extend({
             model: GenreModel,
             url: '/api/genres/',
-            comparator: 'name',
-            parse: function (response) {
-                return response.data;
-            }
+            comparator: 'name'
         });
 
         Vent.on('new:genre', function () {
@@ -73,7 +70,8 @@ define([
                     Helpers.showNotificationMessage('success', 'Genre Added');
                 },
                 error: function (model, response) {
-                    Helpers.showValidationErrors(formElement, $.parseJSON(response.responseText));
+                    var responseJson = $.parseJSON(response.responseText);
+                    Helpers.showValidationErrors(formElement, responseJson.errors);
                 }
             });
         }, this);
@@ -86,7 +84,8 @@ define([
                     Helpers.showNotificationMessage('success', 'Genre Updated');
                 },
                 error: function (model, response) {
-                    Helpers.showValidationErrors(formElement, $.parseJSON(response.responseText));
+                    var responseJson = $.parseJSON(response.responseText);
+                    Helpers.showValidationErrors(formElement, responseJson.errors);
                 }
             });
         }, this);

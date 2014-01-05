@@ -5,11 +5,7 @@ module.exports = {
 		var genresService = new GenresService(db);
 		genresService.get(function (data) {
 			res.set('Content-Type', 'application/json');
-			res.send(200, {
-				state: 'success',
-				message: 'Genres Retreived',
-				data: data
-			});
+			res.send(200, data);
 	    });
 	},
 
@@ -21,22 +17,19 @@ module.exports = {
 		if (name.length === 0) {
 			res.set('Content-Type', 'application/json');
 			res.send(400, {
-				state: 'error',
-				message: 'Errors Found',
-				data: {
-					name: 'You must complete this field'
-				}
+				errors: [
+					{
+						field: 'name',
+						message: 'You must complete this field'
+					}
+				]
 			});
 		} else {
 			newData.name = name;
 
 			genresService.add(newData, function (data) {
 				res.set('Content-Type', 'application/json');
-				res.send(201, {
-					state: 'success',
-					message: 'Genre Added',
-					data: data
-				});
+				res.send(201, data);
 			});
 		}
 	},
@@ -49,22 +42,19 @@ module.exports = {
 		if (name.length === 0) {
 			res.set('Content-Type', 'application/json');
 			res.send(400, {
-				state: 'error',
-				message: 'Errors Found',
-				data: {
-					name: 'You must complete this field'
-				}
+				errors: [
+					{
+						field: 'name',
+						message: 'You must complete this field'
+					}
+				]
 			});
 		} else {
 			newData.name = name;
 
 			genresService.update(id, newData, function (data) {
 				res.set('Content-Type', 'application/json');
-				res.send(200, {
-					state: 'success',
-					message: 'Genre Updated',
-					data: data
-				});
+				res.send(200, data);
 			});
 		}
 	},
@@ -73,11 +63,7 @@ module.exports = {
 		var genresService = new GenresService(db);
 		genresService.delete(id, function () {
 			res.set('Content-Type', 'application/json');
-			res.send(200, {
-				state: 'success',
-				message: 'Genre Deleted',
-				data: {}
-			});
+			res.send(200, {});
 		});
 	}
 };
