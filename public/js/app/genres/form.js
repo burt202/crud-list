@@ -10,15 +10,18 @@ define([
 	    id: 'genre-form-container',
 	    template: _.template(tpl),
 
-	    events: {
-	        'click #add-genre-btn': 'addGenre',
-	        'click #update-genre-btn': 'updateGenre',
-	        'click #cancel-btn': 'hideFormEvent'
-	    },
-
 		ui: {
-			nameInput: '#name'
+			nameInput: '#name',
+			addButton: '#add-genre-btn',
+			updateButton: '#update-genre-btn',
+			cancelButton: '#cancel-btn'
 		},
+
+	    events: {
+	        'click @ui.addButton': 'addGenre',
+	        'click @ui.updateButton': 'updateGenre',
+	        'click @ui.cancelButton': 'hideFormEvent'
+	    },
 
 	    initialize: function () {
 	        this.render();
@@ -28,13 +31,15 @@ define([
 	        this.$el.html(this.template(this.model.toJSON()));
 	        $('#content').prepend(this.el);
 	        this.$el.slideDown();
+
+	        this.bindUIElements();
 	    },
 
 		addGenre: function (e) {
 			e.preventDefault();
 
 			var properties = {
-				name: $(this.ui.nameInput).val()
+				name: this.ui.nameInput.val()
 			};
 
 			Vent.trigger('add:genre', this.model, properties, this.$el);
@@ -44,7 +49,7 @@ define([
 			e.preventDefault();
 
 			var properties = {
-				name: $(this.ui.nameInput).val()
+				name: this.ui.nameInput.val()
 			};
 
 			Vent.trigger('update:genre', this.model, properties, this.$el);

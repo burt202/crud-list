@@ -42,23 +42,15 @@ define([
             this.showForm(model);
         }, this);
 
-        Vent.on('delete:genre', function (model) {
-            if (!confirm('Are you sure you want to delete ' + model.get('name') + '?')) {
-                return;
-            }
-
+        this.showForm  = function (model) {
             if (genresFormView) {
-                genresFormView.hideForm();
+                genresFormView.remove();
             }
 
-            model.destroy({
-                wait: true,
-                success: function (model, response) {
-                    genresContView.render();
-                    Helpers.showNotificationMessage('success', 'Genre Deleted');
-                },
+            genresFormView = new GenresFormView({
+                model: model
             });
-        }, this);
+        };
 
         Vent.on('add:genre', function (model, properties, formElement) {
             model.save(properties, {
@@ -66,7 +58,6 @@ define([
                 success: function (model, response) {
                     genreCollection.add(model);
                     genresFormView.hideForm();
-                    genresContView.render();
                     Helpers.showNotificationMessage('success', 'Genre Added');
                 },
                 error: function (model, response) {
@@ -90,22 +81,30 @@ define([
             });
         }, this);
 
-        this.showForm  = function (model) {
-            if (genresFormView) {
-                genresFormView.remove();
+        Vent.on('delete:genre', function (model) {
+            if (!confirm('Are you sure you want to delete ' + model.get('name') + '?')) {
+                return;
             }
 
-            genresFormView = new GenresFormView({
-                model: model
-            });
-        };
+            if (genresFormView) {
+                genresFormView.hideForm();
+            }
 
-        genresContView = new GenresContView();
+            model.destroy({
+                wait: true,
+                success: function (model, response) {
+                    Helpers.showNotificationMessage('success', 'Genre Deleted');
+                },
+            });
+        }, this);
 
         genreCollection = new GenreCollection();
         genreCollection.fetch({
             success: function () {
-                genresContView.collection = genreCollection;
+                genresContView = new GenresContView({
+                    collection: genreCollection
+                });
+
                 callback(genresContView);
             }
         });

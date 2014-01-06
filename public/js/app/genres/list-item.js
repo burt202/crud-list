@@ -18,13 +18,11 @@ define([
             'change': 'render'
         },
 
-	    showEditGenreForm: function (e) {
-	        e.preventDefault();
+	    showEditGenreForm: function () {
 			Vent.trigger('edit:genre', this.model);
 	    },
 
-	    deleteGenre: function (e) {
-	        e.preventDefault();
+	    deleteGenre: function () {
 	        Vent.trigger('delete:genre', this.model);
 	    }
 	});

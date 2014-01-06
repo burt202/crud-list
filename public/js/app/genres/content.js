@@ -15,6 +15,12 @@ define([
 	        'click #show-add-genre-form': 'showAddGenreForm'
 	    },
 
+        collectionEvents: {
+            'add remove': 'render'
+        },
+
+        _initialEvents: function () {},
+
         emptyView: Marionette.ItemView.extend({
             render: function () {
                 this.$el.html('<li>No items</li>');
