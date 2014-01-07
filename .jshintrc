@@ -60,11 +60,11 @@
 
     "predef": [
         "console",
+        "requirejs",
+        "define",
         "require",
+        "confirm",
         "module",
-        "__dirname",
-        "$",
-        "_",
-        "Backbone",
+        "__dirname"
     ]
 }

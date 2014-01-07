@@ -1,9 +1,9 @@
 requirejs.config({
-    baseUrl: 'js/libs',
-    paths: {
-        app: '../app',
-        templates: '../../templates'
-    },
+	baseUrl: 'js/libs',
+	paths: {
+		app: '../app',
+		templates: '../../templates'
+	},
 	shim: {
 		underscore: {
 			exports: '_'
@@ -12,10 +12,10 @@ requirejs.config({
 			deps: ['underscore', 'jquery'],
 			exports: 'Backbone'
 		},
-        marionette: {
-            deps: ['backbone'],
-            exports: 'Backbone.Marionette'
-        }
+		marionette: {
+			deps: ['backbone'],
+			exports: 'Backbone.Marionette'
+		}
 	}
 });
 

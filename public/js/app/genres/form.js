@@ -7,8 +7,8 @@ define([
 ], function ($, _, Marionette, Vent, tpl) {
 
 	return Marionette.ItemView.extend({
-	    id: 'genre-form-container',
-	    template: _.template(tpl),
+		id: 'genre-form-container',
+		template: _.template(tpl),
 
 		ui: {
 			nameInput: '#name',
@@ -17,11 +17,11 @@ define([
 			cancelButton: '#cancel-btn'
 		},
 
-	    events: {
-	        'click @ui.addButton': 'addButtonEvent',
-	        'click @ui.updateButton': 'updateButtonEvent',
-	        'click @ui.cancelButton': 'cancelButtonEvent'
-	    },
+		events: {
+			'click @ui.addButton': 'addButtonEvent',
+			'click @ui.updateButton': 'updateButtonEvent',
+			'click @ui.cancelButton': 'cancelButtonEvent'
+		},
 
 		addButtonEvent: function (e) {
 			e.preventDefault();
@@ -43,9 +43,9 @@ define([
 			Vent.trigger('update:genre', this.model, properties, this.$el);
 		},
 
-	    cancelButtonEvent: function (e) {
-	        e.preventDefault();
-	        Vent.trigger('hide:genre-form');
-	    }
+		cancelButtonEvent: function (e) {
+			e.preventDefault();
+			Vent.trigger('hide:genre-form');
+		}
 	});
 });

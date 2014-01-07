@@ -41,7 +41,7 @@ var ServerController = function (rootPath, config, routes, db) {
 			endpoint = req.url.substring(5, req.url.length), // strip off '/api/'
 			handlerString = null,
 			urlId = endpoint.split('/')[1],
-			pattern, routeObj, handlerSplit, controllerName, functionName, handler;
+			pattern, verb, route, routeObj, handlerSplit, controllerName, functionName, handler;
 
 		for (route in this.routes) {
 			if (this.routes.hasOwnProperty(route)) {

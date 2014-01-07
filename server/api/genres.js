@@ -6,7 +6,7 @@ module.exports = {
 		genresService.get(function (data) {
 			res.set('Content-Type', 'application/json');
 			res.send(200, data);
-	    });
+		});
 	},
 
 	postAction: function (req, res, db) {

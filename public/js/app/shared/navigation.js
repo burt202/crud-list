@@ -5,8 +5,8 @@ define([
 ], function (_, Marionette, tpl) {
 
 	return Marionette.ItemView.extend({
-	    template: _.template(tpl),
-	    tagName: 'nav',
+		template: _.template(tpl),
+		tagName: 'nav',
 
 		setActive: function (link) {
 			this.$el.find('li').removeClass('active');

@@ -1,15 +1,15 @@
 var express = require('express'),
 	fs = require('fs'),
-    MongoClient = require('mongodb').MongoClient,
-    Server = require('mongodb').Server,
-	config = JSON.parse(fs.readFileSync(__dirname + '/configs/app.json', 'utf8'));
-	routes = JSON.parse(fs.readFileSync(__dirname + '/configs/routes.json', 'utf8'));
+	MongoClient = require('mongodb').MongoClient,
+	Server = require('mongodb').Server,
+	config = JSON.parse(fs.readFileSync(__dirname + '/configs/app.json', 'utf8')),
+	routes = JSON.parse(fs.readFileSync(__dirname + '/configs/routes.json', 'utf8')),
 	AppController = require(__dirname + '/server/server'),
-    app = express(),
-    mongoclient = new MongoClient(new Server(config.databaseHost, config.databasePort), {native_parser: true});
+	app = express(),
+	mongoclient = new MongoClient(new Server(config.databaseHost, config.databasePort), {native_parser: true});
 
 mongoclient.open(function(err, mongoclient) {
-    var db = mongoclient.db(config.databaseName),
+	var db = mongoclient.db(config.databaseName),
 		controller = new AppController(__dirname, config, routes, db);
 
 	app.use(express.bodyParser()),
