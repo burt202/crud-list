@@ -18,24 +18,12 @@ define([
 		},
 
 	    events: {
-	        'click @ui.addButton': 'addGenre',
-	        'click @ui.updateButton': 'updateGenre',
-	        'click @ui.cancelButton': 'hideFormEvent'
+	        'click @ui.addButton': 'addButtonEvent',
+	        'click @ui.updateButton': 'updateButtonEvent',
+	        'click @ui.cancelButton': 'cancelButtonEvent'
 	    },
 
-	    initialize: function () {
-	        this.render();
-	    },
-
-	    render: function () {
-	        this.$el.html(this.template(this.model.toJSON()));
-	        $('#content').prepend(this.el);
-	        this.$el.slideDown();
-
-	        this.bindUIElements();
-	    },
-
-		addGenre: function (e) {
+		addButtonEvent: function (e) {
 			e.preventDefault();
 
 			var properties = {
@@ -45,7 +33,7 @@ define([
 			Vent.trigger('add:genre', this.model, properties, this.$el);
 		},
 
-		updateGenre: function (e) {
+		updateButtonEvent: function (e) {
 			e.preventDefault();
 
 			var properties = {
@@ -55,18 +43,9 @@ define([
 			Vent.trigger('update:genre', this.model, properties, this.$el);
 		},
 
-	    hideFormEvent: function (e) {
+	    cancelButtonEvent: function (e) {
 	        e.preventDefault();
-	        this.hideForm();
-	    },
-
-	    hideForm: function () {
-	        var that = this;
-
-	        this.$el.slideUp(400, function () {
-	            that.$el.hide();
-	            that.remove();
-	        });
+	        Vent.trigger('hide:genre-form');
 	    }
 	});
 });

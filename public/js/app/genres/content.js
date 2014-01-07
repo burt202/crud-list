@@ -11,14 +11,20 @@ define([
         itemViewContainer: '#genres-list',
         itemView: GenresListItemView,
 
+        ui: {
+            newButton: '#show-add-genre-form'
+        },
+
 	    events: {
-	        'click #show-add-genre-form': 'showAddGenreForm'
+	        'click @ui.newButton': 'newButtonEvent'
 	    },
 
         collectionEvents: {
             'add remove': 'render'
         },
 
+        // override _initialEvents function to stop the binding of default marionette collectionView events,
+        // collectionEvents declared above is all we need here
         _initialEvents: function () {},
 
         emptyView: Marionette.ItemView.extend({
@@ -33,7 +39,7 @@ define([
             };
         },
 
-	    showAddGenreForm: function (e) {
+	    newButtonEvent: function (e) {
 	        e.preventDefault();
 	        Vent.trigger('new:genre');
 	    }

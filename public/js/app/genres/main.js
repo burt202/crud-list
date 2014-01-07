@@ -50,14 +50,28 @@ define([
             genresFormView = new GenresFormView({
                 model: model
             });
+
+            $('#content').prepend(genresFormView.render().el);
+            genresFormView.$el.slideDown(400, function () {
+                genresFormView.ui.nameInput.focus();
+            });
+        };
+
+        this.hideForm  = function (model) {
+            genresFormView.$el.slideUp(400, function () {
+                genresFormView.$el.hide();
+                genresFormView.remove();
+            });
         };
 
         Vent.on('add:genre', function (model, properties, formElement) {
+            var that = this;
+
             model.save(properties, {
                 wait: true,
                 success: function (model, response) {
                     genreCollection.add(model);
-                    genresFormView.hideForm();
+                    that.hideForm();
                     Helpers.showNotificationMessage('success', 'Genre Added');
                 },
                 error: function (model, response) {
@@ -68,10 +82,12 @@ define([
         }, this);
 
         Vent.on('update:genre', function (model, properties, formElement) {
+            var that = this;
+
             model.save(properties, {
                 wait: true,
                 success: function (model, response) {
-                    genresFormView.hideForm();
+                    that.hideForm();
                     Helpers.showNotificationMessage('success', 'Genre Updated');
                 },
                 error: function (model, response) {
@@ -87,7 +103,7 @@ define([
             }
 
             if (genresFormView) {
-                genresFormView.hideForm();
+                this.hideForm();
             }
 
             model.destroy({
@@ -96,6 +112,10 @@ define([
                     Helpers.showNotificationMessage('success', 'Genre Deleted');
                 },
             });
+        }, this);
+
+        Vent.on('hide:genre-form', function () {
+            this.hideForm();
         }, this);
 
         genreCollection = new GenreCollection();

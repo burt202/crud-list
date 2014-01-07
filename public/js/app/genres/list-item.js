@@ -9,20 +9,25 @@ define([
 	    tagName: 'li',
 	    template: _.template(tpl),
 
+		ui: {
+			editIcon: '.show-edit-genre-form',
+			deleteIcon: '.delete-genre-btn'
+		},
+
 	    events: {
-	        'click .show-edit-genre-form': 'showEditGenreForm',
-	        'click .delete-genre-btn': 'deleteGenre'
+	        'click @ui.editIcon': 'editIconEvent',
+	        'click @ui.deleteIcon': 'deleteIconEvent'
 	    },
 
         modelEvents: {
             'change': 'render'
         },
 
-	    showEditGenreForm: function () {
+	    editIconEvent: function () {
 			Vent.trigger('edit:genre', this.model);
 	    },
 
-	    deleteGenre: function () {
+	    deleteIconEvent: function () {
 	        Vent.trigger('delete:genre', this.model);
 	    }
 	});
