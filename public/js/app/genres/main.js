@@ -1,7 +1,7 @@
 define([
 	'jquery',
 	'backbone',
-	'app/shared/vent',
+	'app/genres/vent',
 	'app/genres/content',
 	'app/genres/form',
 	'app/shared/helpers'

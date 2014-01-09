@@ -1,7 +1,7 @@
 define([
 	'underscore',
 	'marionette',
-	'app/shared/vent',
+	'app/genres/vent',
 	'text!templates/genres/list-item.html'
 ], function (_, Marionette, Vent, tpl) {
 

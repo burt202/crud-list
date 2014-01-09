@@ -1,4 +1,4 @@
-requirejs.config({
+require.config({
 	baseUrl: 'js/libs',
 	paths: {
 		app: '../app',
@@ -17,10 +17,4 @@ requirejs.config({
 			exports: 'Backbone.Marionette'
 		}
 	}
-});
-
-require([
-	'app/app'
-], function (App) {
-	App.start();
 });
