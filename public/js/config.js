@@ -1,20 +1,22 @@
-require.config({
-	baseUrl: 'js/libs',
-	paths: {
-		app: '../app',
-		templates: '../../templates'
-	},
-	shim: {
-		underscore: {
-			exports: '_'
+define([], function () {
+	return {
+		baseUrl: 'js/libs',
+		paths: {
+			app: '../app',
+			templates: '../../templates'
 		},
-		backbone: {
-			deps: ['underscore', 'jquery'],
-			exports: 'Backbone'
-		},
-		marionette: {
-			deps: ['backbone'],
-			exports: 'Backbone.Marionette'
+		shim: {
+			underscore: {
+				exports: '_'
+			},
+			backbone: {
+				deps: ['underscore', 'jquery'],
+				exports: 'Backbone'
+			},
+			marionette: {
+				deps: ['backbone'],
+				exports: 'Backbone.Marionette'
+			}
 		}
-	}
+	};
 });

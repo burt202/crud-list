@@ -1,7 +1,12 @@
-require(['./config'], function(){
+require([
+	'./config'
+], function (config) {
+	require.config(config);
 	require([
-		'app/app'
-	], function (App) {
+		'app/app',
+		'app/router'
+	], function (App, Router) {
+		App.Router = Router;
 		App.start();
 	});
 });
