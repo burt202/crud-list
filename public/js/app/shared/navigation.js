@@ -8,9 +8,13 @@ define([
 		template: _.template(tpl),
 		tagName: 'nav',
 
+		ui: {
+			listItem: 'li'
+		},
+
 		setActive: function (link) {
-			this.$el.find('li').removeClass('active');
-			this.$el.find('li.' + link).addClass('active');
+			this.ui.listItem.removeClass('active');
+			this.ui.listItem.siblings('.' + link).addClass('active');
 		}
 	});
 });
