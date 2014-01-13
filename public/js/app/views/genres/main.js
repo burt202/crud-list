@@ -4,26 +4,15 @@ define([
 	'app/views/genres/vent',
 	'app/views/genres/content',
 	'app/views/genres/form',
-	'app/views/shared/helpers'
-], function ($, Backbone, Vent, GenresContView, GenresFormView, Helpers) {
+	'app/views/shared/helpers',
+	'app/models/genres',
+	'app/collections/genres'
+], function ($, Backbone, Vent, GenresContView, GenresFormView, Helpers, GenreModel, GenreCollection) {
 
 	return function (callback) {
-		var GenreModel,
-			GenreCollection,
-			genreCollection,
+		var genreCollection,
 			genresFormView,
 			genresContView;
-
-		GenreModel = Backbone.Model.extend({
-			idAttribute: '_id',
-			urlRoot: '/api/genres/'
-		});
-
-		GenreCollection = Backbone.Collection.extend({
-			model: GenreModel,
-			url: '/api/genres/',
-			comparator: 'name'
-		});
 
 		Vent.on('new:genre', function () {
 			var model = new GenreModel({
