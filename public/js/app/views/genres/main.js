@@ -10,29 +10,53 @@ define([
 ], function ($, Backbone, Vent, GenresContView, GenresFormView, Helpers, GenreModel, GenreCollection) {
 
 	return function (callback) {
-		var genreCollection,
-			genresFormView,
-			genresContView;
+		var genresFormView,
+			genresContView,
+			genreCollection = new GenreCollection();
 
 		Vent.on('new:genre', function () {
+			this.newGenre();
+		}, this);
+
+		Vent.on('edit:genre', function (model) {
+			this.editGenre(model);
+		}, this);
+
+		Vent.on('add:genre', function (model, properties, formElement) {
+			this.addGenre(model, properties, formElement);
+		}, this);
+
+		Vent.on('update:genre', function (model, properties, formElement) {
+			this.updateGenre(model, properties, formElement);
+		}, this);
+
+		Vent.on('delete:genre', function (model) {
+			this.deleteGenre(model);
+		}, this);
+
+		Vent.on('hide:genre-form', function () {
+			this.hideForm();
+		}, this);
+
+		this.newGenre = function () {
 			var model = new GenreModel({
 				action: 'add',
 				title: 'Add A Genre'
 			});
 
 			this.showForm(model);
-		}, this);
+		};
 
-		Vent.on('edit:genre', function (model) {
+		this.editGenre = function (model) {
 			model.set({
 				action: 'edit',
 				title: 'Update ' + model.get('name')
 			});
 
 			this.showForm(model);
-		}, this);
+		};
 
-		Vent.on('add:genre', function (model, properties, formElement) {
+		this.addGenre = function (model, properties, formElement) {
 			var that = this;
 
 			model.save(properties, {
@@ -47,9 +71,9 @@ define([
 					Helpers.showValidationErrors(formElement, responseJson.errors);
 				}
 			});
-		}, this);
+		};
 
-		Vent.on('update:genre', function (model, properties, formElement) {
+		this.updateGenre = function (model, properties, formElement) {
 			var that = this;
 
 			model.save(properties, {
@@ -63,9 +87,9 @@ define([
 					Helpers.showValidationErrors(formElement, responseJson.errors);
 				}
 			});
-		}, this);
+		};
 
-		Vent.on('delete:genre', function (model) {
+		this.deleteGenre = function (model) {
 			if (!confirm('Are you sure you want to delete ' + model.get('name') + '?')) {
 				return;
 			}
@@ -80,13 +104,9 @@ define([
 					Helpers.showNotificationMessage('success', 'Genre Deleted');
 				}
 			});
-		}, this);
+		};
 
-		Vent.on('hide:genre-form', function () {
-			this.hideForm();
-		}, this);
-
-		this.showForm  = function (model) {
+		this.showForm = function (model) {
 			if (genresFormView) {
 				genresFormView.remove();
 			}
@@ -101,14 +121,13 @@ define([
 			});
 		};
 
-		this.hideForm  = function () {
+		this.hideForm = function () {
 			genresFormView.$el.slideUp(400, function () {
 				genresFormView.$el.hide();
 				genresFormView.remove();
 			});
 		};
 
-		genreCollection = new GenreCollection();
 		genreCollection.fetch({
 			success: function () {
 				genresContView = new GenresContView({
