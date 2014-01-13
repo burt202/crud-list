@@ -1,7 +1,7 @@
 define([
 	'marionette',
 	'backbone',
-	'app/shared/navigation'
+	'app/views/shared/navigation'
 ], function (Marionette, Backbone, NavigationView) {
 
 	var app = new Marionette.Application(),

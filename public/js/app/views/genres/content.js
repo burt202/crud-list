@@ -2,8 +2,8 @@ define([
 	'underscore',
 	'marionette',
 	'text!templates/genres/content.html',
-	'app/genres/vent',
-	'app/genres/list-item'
+	'app/views/genres/vent',
+	'app/views/genres/list-item'
 ], function (_, Marionette, tpl, Vent, GenresListItemView) {
 
 	return Marionette.CompositeView.extend({

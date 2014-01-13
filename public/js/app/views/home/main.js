@@ -1,5 +1,5 @@
 define([
-    'app/home/content'
+    'app/views/home/content'
 ], function (HomeContView) {
 
     return function (callback) {

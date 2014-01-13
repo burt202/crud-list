@@ -2,7 +2,7 @@ define([
 	'jquery',
 	'underscore',
 	'marionette',
-	'app/genres/vent',
+	'app/views/genres/vent',
 	'text!templates/genres/form.html'
 ], function ($, _, Marionette, Vent, tpl) {
 

@@ -1,10 +1,10 @@
 define([
 	'jquery',
 	'backbone',
-	'app/genres/vent',
-	'app/genres/content',
-	'app/genres/form',
-	'app/shared/helpers'
+	'app/views/genres/vent',
+	'app/views/genres/content',
+	'app/views/genres/form',
+	'app/views/shared/helpers'
 ], function ($, Backbone, Vent, GenresContView, GenresFormView, Helpers) {
 
 	return function (callback) {
@@ -42,28 +42,6 @@ define([
 
 			this.showForm(model);
 		}, this);
-
-		this.showForm  = function (model) {
-			if (genresFormView) {
-				genresFormView.remove();
-			}
-
-			genresFormView = new GenresFormView({
-				model: model
-			});
-
-			$('#content').prepend(genresFormView.render().el);
-			genresFormView.$el.slideDown(400, function () {
-				genresFormView.ui.nameInput.focus();
-			});
-		};
-
-		this.hideForm  = function () {
-			genresFormView.$el.slideUp(400, function () {
-				genresFormView.$el.hide();
-				genresFormView.remove();
-			});
-		};
 
 		Vent.on('add:genre', function (model, properties, formElement) {
 			var that = this;
@@ -118,6 +96,28 @@ define([
 		Vent.on('hide:genre-form', function () {
 			this.hideForm();
 		}, this);
+
+		this.showForm  = function (model) {
+			if (genresFormView) {
+				genresFormView.remove();
+			}
+
+			genresFormView = new GenresFormView({
+				model: model
+			});
+
+			$('#content').prepend(genresFormView.render().el);
+			genresFormView.$el.slideDown(400, function () {
+				genresFormView.ui.nameInput.focus();
+			});
+		};
+
+		this.hideForm  = function () {
+			genresFormView.$el.slideUp(400, function () {
+				genresFormView.$el.hide();
+				genresFormView.remove();
+			});
+		};
 
 		genreCollection = new GenreCollection();
 		genreCollection.fetch({

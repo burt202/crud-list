@@ -1,7 +1,7 @@
 define([
 	'app/app',
-	'app/home/main',
-	'app/genres/main'
+	'app/views/home/main',
+	'app/views/genres/main'
 ], function (App, HomeMain, GenresMain) {
 
 	return {
