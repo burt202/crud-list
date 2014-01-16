@@ -11,23 +11,18 @@ module.exports = {
 
 	postAction: function (req, res, db) {
 		var genresService = new GenresService(db),
-			newData = {},
-			name = req.body.name || '';
+			data = {
+				name: req.body.name || ''
+			},
+			errors = genresService.validate(data);
 
-		if (name.length === 0) {
+		if (errors.length > 0) {
 			res.set('Content-Type', 'application/json');
 			res.send(400, {
-				errors: [
-					{
-						field: 'name',
-						message: 'You must complete this field'
-					}
-				]
+				errors: errors
 			});
 		} else {
-			newData.name = name;
-
-			genresService.add(newData, function (data) {
+			genresService.add(data, function (data) {
 				res.set('Content-Type', 'application/json');
 				res.send(201, data);
 			});
@@ -36,23 +31,18 @@ module.exports = {
 
 	putAction: function (req, res, db, id) {
 		var genresService = new GenresService(db),
-			newData = {},
-			name = req.body.name || '';
+			data = {
+				name: req.body.name || ''
+			},
+			errors = genresService.validate(data);
 
-		if (name.length === 0) {
+		if (errors.length > 0) {
 			res.set('Content-Type', 'application/json');
 			res.send(400, {
-				errors: [
-					{
-						field: 'name',
-						message: 'You must complete this field'
-					}
-				]
+				errors: errors
 			});
 		} else {
-			newData.name = name;
-
-			genresService.update(id, newData, function (data) {
+			genresService.update(id, data, function (data) {
 				res.set('Content-Type', 'application/json');
 				res.send(200, data);
 			});
@@ -61,7 +51,7 @@ module.exports = {
 
 	deleteAction: function (req, res, db, id) {
 		var genresService = new GenresService(db);
-		genresService.delete(id, function () {
+		genresService.remove(id, function () {
 			res.set('Content-Type', 'application/json');
 			res.send(200, {});
 		});
