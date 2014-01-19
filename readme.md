@@ -1,6 +1,6 @@
 ## CRUD List App
 
-Uses [NodeJS](http://nodejs.org/), [MongoDB](http://www.mongodb.org/), [Backbone](http://backbonejs.org/) (with [Marionette](http://marionettejs.com/)), [RequireJS](http://requirejs.org/) & [GulpJS](http://gulpjs.com/)
+Uses [NodeJS](http://nodejs.org/), [MongoDB](http://www.mongodb.org/), [BackboneJS](http://backbonejs.org/) (with [MarionetteJS](http://marionettejs.com/)), [RequireJS](http://requirejs.org/) & [GulpJS](http://gulpjs.com/)
 
 ### Installation
 
