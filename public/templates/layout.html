@@ -2,11 +2,7 @@
 <html lang="en">
 	<head>
 		<title>Node App v2</title>
-		{% if envType === 'development' or urlOverride %}
-			<link href="/css/" rel="stylesheet" type="text/css">
-		{% else %}
-			<link href="/build/combined.css" rel="stylesheet" type="text/css">
-		{% endif %}
+		<link href="/build/combined.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<div id="main">

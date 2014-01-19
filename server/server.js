@@ -1,6 +1,4 @@
-var swig = require('swig'),
-	fs = require('fs'),
-	less = require('less');
+var swig = require('swig');
 
 var ServerController = function (rootPath, config, routes, db) {
 	this.rootPath = rootPath;
@@ -23,17 +21,6 @@ var ServerController = function (rootPath, config, routes, db) {
 
 		res.set('Content-Type', 'text/html');
 		res.send(tpl);
-	};
-
-	this.compileLess = function (req, res) {
-		var filePath = this.rootPath + '/public/css/imports.less',
-			lessCode = fs.readFileSync(filePath, 'utf8'),
-			parser = new less.Parser({ paths: ['public/css/'] });
-
-		parser.parse(lessCode, function (error, cssTree) {
-			res.set('Content-Type', 'text/css');
-			res.send(cssTree.toCSS());
-		});
 	};
 
 	this.serveApiEndpoint = function (req, res) {
