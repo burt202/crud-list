@@ -2,7 +2,8 @@ var gulp = require('gulp'),
 	jshint = require('gulp-jshint'),
 	less = require('gulp-less'),
 	minifyCSS = require('gulp-minify-css'),
-	rename = require('gulp-rename');
+	rename = require('gulp-rename'),
+	nodemon = require('gulp-nodemon');
 
 gulp.task('lint', function() {
 	gulp.src([
@@ -25,8 +26,15 @@ gulp.task('less', function() {
 		.pipe(gulp.dest('public/build/'));
 });
 
+gulp.task('develop', function () {
+	nodemon({
+		script: 'app.js',
+		options: ''
+	});
+});
+
 gulp.task('default', function() {
-	gulp.run('lint', 'less');
+	gulp.run('develop');
 
 	gulp.watch(['public/js/**', 'server/**'], function() {
 		gulp.run('lint');
