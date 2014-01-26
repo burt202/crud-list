@@ -59,12 +59,13 @@
     "white"         : false,
 
     "predef": [
-        "console",
-        "requirejs",
         "define",
         "require",
         "confirm",
         "module",
-        "__dirname"
+        "__dirname",
+        "it",
+        "describe",
+        "expect"
     ]
 }
