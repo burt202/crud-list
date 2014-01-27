@@ -16,6 +16,7 @@ mongoclient.open(function(err, mongoclient) {
 	app.use(express.static(__dirname + '/public'));
 
 	app.all('/api/*', controller.serveApiEndpoint.bind(controller));
+	app.get('/tests', controller.loadTests.bind(controller));
 	app.get('*', controller.load.bind(controller));
 
 	app.listen(config.port, config.domain);

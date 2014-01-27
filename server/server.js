@@ -23,6 +23,13 @@ var ServerController = function (rootPath, config, routes, db) {
 		res.send(tpl);
 	};
 
+	this.loadTests = function (req, res) {
+		var tpl = swig.renderFile('public/tests/runner.html', {});
+
+		res.set('Content-Type', 'text/html');
+		res.send(tpl);
+	};
+
 	this.serveApiEndpoint = function (req, res) {
 		var method = req.method.toLowerCase(),
 			endpoint = req.url.substring(5, req.url.length), // strip off '/api/'

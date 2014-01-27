@@ -3,7 +3,8 @@ define([], function () {
 		baseUrl: 'js/libs',
 		paths: {
 			app: '../app',
-			templates: '../../templates'
+			templates: '../../templates',
+			tests: '../../tests/'
 		},
 		shim: {
 			underscore: {

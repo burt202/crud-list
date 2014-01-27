@@ -14,7 +14,7 @@ define([
 
 		setActive: function (link) {
 			this.ui.listItem.removeClass('active');
-			this.ui.listItem.siblings('.' + link).addClass('active');
+			this.ui.listItem.filter('.' + link).addClass('active');
 		}
 	});
 });

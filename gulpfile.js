@@ -10,7 +10,7 @@ gulp.task('lint', function() {
 			'public/js/**',
 			'server/**',
 			'!public/build/*.js',
-			'!public/js/libs/*.js'
+			'!public/js/libs/**'
 		])
 		.pipe(jshint('.jshintrc'))
 		.pipe(jshint.reporter('jshint-stylish'));
