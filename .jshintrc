@@ -66,6 +66,7 @@
         "__dirname",
         "it",
         "describe",
-        "expect"
+        "expect",
+        "spyOn"
     ]
 }
