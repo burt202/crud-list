@@ -25,7 +25,10 @@ define([
 
 		addButtonEvent: function (e) {
 			e.preventDefault();
+			this.addButton();
+		},
 
+		addButton: function () {
 			var properties = {
 				name: this.ui.nameInput.val()
 			};
@@ -35,7 +38,10 @@ define([
 
 		updateButtonEvent: function (e) {
 			e.preventDefault();
+			this.updateButton();
+		},
 
+		updateButton: function () {
 			var properties = {
 				name: this.ui.nameInput.val()
 			};
@@ -45,6 +51,10 @@ define([
 
 		cancelButtonEvent: function (e) {
 			e.preventDefault();
+			this.cancelButton();
+		},
+
+		cancelButton: function () {
 			Vent.trigger('hide:genre-form');
 		}
 	});
