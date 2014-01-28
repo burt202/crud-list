@@ -3,7 +3,7 @@ define([
 	'app/views/genres/vent'
 ], function (Form, Vent) {
 
-	describe('Form', function() {
+	describe('Genre Form', function() {
 		describe('Basic Instantiation', function() {
 			it('should be able to be instantiated', function() {
 				var form = new Form();

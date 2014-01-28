@@ -3,7 +3,7 @@ define([
 	'app/views/genres/vent'
 ], function (ListItem, Vent) {
 
-	describe('List Item', function() {
+	describe('Genre List Item', function() {
 		describe('Basic Instantiation', function() {
 			it('should be able to be instantiated', function() {
 				var listItem = new ListItem();

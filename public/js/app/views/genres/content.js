@@ -28,8 +28,9 @@ define([
 		_initialEvents: function () {},
 
 		emptyView: Marionette.ItemView.extend({
+			tagName: 'li',
 			render: function () {
-				this.$el.html('<li>No items</li>');
+				this.$el.html('No items');
 			}
 		}),
 
@@ -41,6 +42,10 @@ define([
 
 		newButtonEvent: function (e) {
 			e.preventDefault();
+			this.newButton();
+		},
+
+		newButton: function () {
 			Vent.trigger('new:genre');
 		}
 	});
