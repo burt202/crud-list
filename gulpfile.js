@@ -3,7 +3,8 @@ var gulp = require('gulp'),
 	less = require('gulp-less'),
 	minifyCSS = require('gulp-minify-css'),
 	rename = require('gulp-rename'),
-	nodemon = require('gulp-nodemon');
+	nodemon = require('gulp-nodemon'),
+	jeditor = require('gulp-json-editor');
 
 gulp.task('lint', function() {
 	gulp.src([
@@ -24,6 +25,24 @@ gulp.task('less', function() {
 		.pipe(minifyCSS())
 		.pipe(rename('combined.css'))
 		.pipe(gulp.dest('public/build/'));
+});
+
+gulp.task('type-production', function() {
+	gulp.src('configs/app.json')
+		.pipe(jeditor(function(json) {
+			json.type = 'production';
+			return json;
+		}))
+		.pipe(gulp.dest('configs/'));
+});
+
+gulp.task('type-development', function() {
+	gulp.src('configs/app.json')
+		.pipe(jeditor(function(json) {
+			json.type = 'production';
+			return json;
+		}))
+		.pipe(gulp.dest('configs/'));
 });
 
 gulp.task('develop', function () {

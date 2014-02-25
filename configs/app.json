@@ -1,8 +1,8 @@
 {
-	"port": 8000,
-	"domain": "node.github.dev",
-	"type": "development",
-	"databaseHost": "localhost",
-	"databasePort": 27017,
-	"databaseName": "test"
+  "port": 8000,
+  "domain": "node.github.dev",
+  "type": "development",
+  "databaseHost": "localhost",
+  "databasePort": 27017,
+  "databaseName": "test"
 }
