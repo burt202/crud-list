@@ -1,6 +1,6 @@
 {
     "baseUrl": "../js/libs",
-    "name": "../common",
+    "name": "../start",
     "out": "combined.js",
     "paths": {
         "app": "../app",

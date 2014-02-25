@@ -4,9 +4,10 @@ var gulp = require('gulp'),
 	minifyCSS = require('gulp-minify-css'),
 	rename = require('gulp-rename'),
 	nodemon = require('gulp-nodemon'),
-	jeditor = require('gulp-json-editor');
+	jeditor = require('gulp-json-editor'),
+	shell = require('gulp-shell');
 
-gulp.task('lint', function() {
+gulp.task('jshint', function() {
 	gulp.src([
 			'public/js/**',
 			'server/**',
@@ -17,7 +18,7 @@ gulp.task('lint', function() {
 		.pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('less', function() {
+gulp.task('compile-less', function() {
 	gulp.src('public/css/imports.less')
 		.pipe(less({
 			paths: ['public/css/']
@@ -39,27 +40,39 @@ gulp.task('type-production', function() {
 gulp.task('type-development', function() {
 	gulp.src('configs/app.json')
 		.pipe(jeditor(function(json) {
-			json.type = 'production';
+			json.type = 'development';
 			return json;
 		}))
 		.pipe(gulp.dest('configs/'));
 });
 
-gulp.task('develop', function () {
+gulp.task('bundle-js', shell.task([
+	'node public/build/r.js -o public/build/build.json'
+]));
+
+gulp.task('init', function () {
 	nodemon({
 		script: 'app.js',
 		options: ''
 	});
 });
 
+gulp.task('build', function () {
+	gulp.run('bundle-js', 'type-production');
+});
+
+gulp.task('unbuild', function () {
+	gulp.run('type-development');
+});
+
 gulp.task('default', function() {
-	gulp.run('develop');
+	gulp.run('init');
 
 	gulp.watch(['public/js/**', 'server/**'], function() {
-		gulp.run('lint');
+		gulp.run('jshint');
 	});
 
 	gulp.watch('public/css/**', function() {
-		gulp.run('less');
+		gulp.run('compile-less');
 	});
 });
