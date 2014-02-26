@@ -10,11 +10,7 @@ Uses [NodeJS](http://nodejs.org/), [MongoDB](http://www.mongodb.org/), [Backbone
 
 ### Production Build Steps
 
-Make sure you are in the project directory and run the following command in the terminal:
-
-    node public/build/r.js -o public/build/build.json
-
-When this is done, alter configs/app.json and change `type = 'production'`
+* run `gulp build`
 
 ### Tests
 

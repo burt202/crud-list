@@ -2,6 +2,7 @@
     "baseUrl": "../js/libs",
     "name": "../start",
     "out": "combined.js",
+    "findNestedDependencies": true,
     "paths": {
         "app": "../app",
         "templates": "../../templates"
