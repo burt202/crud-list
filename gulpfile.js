@@ -5,12 +5,42 @@ var gulp = require('gulp'),
 	rename = require('gulp-rename'),
 	nodemon = require('gulp-nodemon'),
 	jeditor = require('gulp-json-editor'),
-	shell = require('gulp-shell');
+	shell = require('gulp-shell'),
+	jasmine = require('gulp-jasmine');
+
+gulp.task('default', function() {
+	gulp.run('init');
+
+	gulp.watch('public/css/**', function() {
+		gulp.run('compile-less');
+	});
+});
+
+gulp.task('init', function () {
+	nodemon({
+		script: 'app.js',
+		options: ''
+	});
+});
+
+gulp.task('build', function () {
+	gulp.run('bundle-js', 'type-production');
+});
+
+gulp.task('unbuild', function () {
+	gulp.run('type-development');
+});
+
+gulp.task('jasmine', function() {
+	gulp.src('tests/**')
+        .pipe(jasmine());
+});
 
 gulp.task('jshint', function() {
 	gulp.src([
 			'public/js/**',
 			'server/**',
+			'tests/**',
 			'!public/build/*.js',
 			'!public/js/libs/**'
 		])
@@ -49,30 +79,3 @@ gulp.task('type-development', function() {
 gulp.task('bundle-js', shell.task([
 	'node public/build/r.js -o public/build/build.json'
 ]));
-
-gulp.task('init', function () {
-	nodemon({
-		script: 'app.js',
-		options: ''
-	});
-});
-
-gulp.task('build', function () {
-	gulp.run('bundle-js', 'type-production');
-});
-
-gulp.task('unbuild', function () {
-	gulp.run('type-development');
-});
-
-gulp.task('default', function() {
-	gulp.run('init');
-
-	gulp.watch(['public/js/**', 'server/**'], function() {
-		gulp.run('jshint');
-	});
-
-	gulp.watch('public/css/**', function() {
-		gulp.run('compile-less');
-	});
-});

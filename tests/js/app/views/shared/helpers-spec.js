@@ -1,7 +1,8 @@
 var requirejs = require('requirejs');
 require('../../../../init');
 
-var Helpers = requirejs('app/views/shared/helpers');
+var Helpers = requirejs('app/views/shared/helpers'),
+	$ = requirejs('jquery');
 
 describe('Helpers', function () {
 	describe('Validation Errors', function () {

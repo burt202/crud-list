@@ -14,4 +14,4 @@ Uses [NodeJS](http://nodejs.org/), [MongoDB](http://www.mongodb.org/), [Backbone
 
 ### Tests
 
-* start the app and navigate to `/tests`
+* run `gulp jasmine`
