@@ -17,6 +17,8 @@
     "jshint-stylish": "~0.1.5",
     "gulp-nodemon": "~0.1.1",
     "gulp-json-editor": "~2.0.2",
-    "gulp-shell": "~0.2.4"
+    "gulp-shell": "~0.2.4",
+    "requirejs": "~2.1.11",
+    "jsdom": "~0.10.1"
   }
 }

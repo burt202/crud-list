@@ -1,51 +1,51 @@
-define([
-	'app/views/genres/content',
-	'app/views/genres/vent',
-	'backbone'
-], function (Content, Vent, Backbone) {
+var requirejs = require('requirejs');
+require('../../../../init');
 
-	describe('Genre Content', function() {
-		describe('Basic Instantiation', function() {
-			it('should be able to be instantiated', function() {
-				var content = new Content();
+var Backbone = requirejs('backbone'),
+	Content = requirejs('app/views/genres/content'),
+	Vent = requirejs('app/views/genres/vent');
 
-				expect(content).toBeTruthy();
-			});
+describe('Genre Content', function() {
+	describe('Basic Instantiation', function() {
+		it('should be able to be instantiated', function() {
+			var content = new Content();
+
+			expect(content).toBeTruthy();
 		});
+	});
 
-		describe('Empty Collection', function() {
-			it('should show `no items` message', function() {
-				var content = new Content({
-					collection: new Backbone.Collection([])
-				});
-				content.render();
-
-				expect(content.$(content.itemViewContainer).html()).toEqual('<li>No items</li>');
+	describe('Empty Collection', function() {
+		it('should show `no items` message', function() {
+			var content = new Content({
+				collection: new Backbone.Collection([])
 			});
+			content.render();
+
+			expect(content.$(content.itemViewContainer).html()).toEqual('<li>No items</li>');
 		});
+	});
 
-		describe('Template Data', function() {
-			it('should return correctly', function() {
-				var content = new Content({
-					collection: new Backbone.Collection([{}, {}])
-				}),
-				actual = content.serializeData(),
-				expected = {
-					genreCount: 2
-				};
+	describe('Template Data', function() {
+		it('should return correctly', function() {
+			var content = new Content({
+				collection: new Backbone.Collection([{}, {}])
+			}),
+			actual = content.serializeData(),
+			expected = {
+				genreCount: 2
+			};
 
-				expect(actual).toEqual(expected);
-			});
+			expect(actual).toEqual(expected);
 		});
+	});
 
-		describe('New Button', function() {
-			it('should trigger an event', function() {
-				var content = new Content();
-				spyOn(Vent, 'trigger');
-				content.newButton();
+	describe('New Button', function() {
+		it('should trigger an event', function() {
+			var content = new Content();
+			spyOn(Vent, 'trigger');
+			content.newButton();
 
-				expect(Vent.trigger).toHaveBeenCalledWith('new:genre');
-			});
+			expect(Vent.trigger).toHaveBeenCalledWith('new:genre');
 		});
 	});
 });

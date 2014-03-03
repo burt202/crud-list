@@ -67,6 +67,8 @@
         "it",
         "describe",
         "expect",
-        "spyOn"
+        "spyOn",
+        "global",
+        "beforeEach"
     ]
 }

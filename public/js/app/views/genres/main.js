@@ -41,7 +41,8 @@ define([
 		this.newGenre = function () {
 			var model = new GenreModel({
 				action: 'add',
-				title: 'Add A Genre'
+				title: 'Add A Genre',
+				name: ''
 			});
 
 			this.showForm(model);
