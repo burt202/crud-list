@@ -5,7 +5,7 @@ global.document = jsdom.jsdom('<html><body></body></html>');
 global.window = global.document.parentWindow;
 
 requirejs.config({
-	baseUrl: __dirname + '/../js/libs',
+	baseUrl: __dirname + '/../public/js/libs',
 	paths: {
 		app: '../app',
 		templates: '../../templates'
