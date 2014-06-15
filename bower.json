@@ -1,0 +1,13 @@
+{
+  "name": "crud-list",
+  "version": "0.3.0",
+  "private": true,
+  "dependencies": {
+    "backbone": "latest",
+    "jquery": "latest",
+    "marionette": "latest",
+    "requirejs": "latest",
+    "requirejs-text": "latest",
+    "underscore": "latest"
+  }
+}

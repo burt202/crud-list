@@ -19,4 +19,5 @@ mongoclient.open(function(err, mongoclient) {
 	app.get('*', controller.load.bind(controller));
 
 	app.listen(config.port, config.domain);
+	console.log('Running at http://' + config.domain + ':' + config.port);
 });

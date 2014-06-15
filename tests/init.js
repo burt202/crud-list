@@ -5,10 +5,15 @@ global.document = jsdom.jsdom('<html><body></body></html>');
 global.window = global.document.parentWindow;
 
 requirejs.config({
-	baseUrl: __dirname + '/../public/js/libs',
+	baseUrl: __dirname + '/../public/bower_components',
 	paths: {
-		app: '../app',
-		templates: '../../templates'
+		app: '../js/app',
+		templates: '../templates',
+		backbone: 'backbone/backbone',
+		marionette: 'marionette/lib/backbone.marionette',
+		jquery: 'jquery/dist/jquery',
+		text: 'requirejs-text/text',
+		underscore: 'underscore/underscore'
 	},
 	shim: {
 		underscore: {

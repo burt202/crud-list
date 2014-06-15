@@ -1,10 +1,15 @@
 define([], function () {
 	return {
-		baseUrl: 'js/libs',
+		baseUrl: 'bower_components',
 		paths: {
-			app: '../app',
-			templates: '../../templates',
-			tests: '../../tests/'
+			app: '../js/app',
+			templates: '../templates',
+			tests: '../tests/',
+			backbone: 'backbone/backbone',
+			marionette: 'marionette/lib/backbone.marionette',
+			jquery: 'jquery/dist/jquery',
+			text: 'requirejs-text/text',
+			underscore: 'underscore/underscore'
 		},
 		shim: {
 			underscore: {

@@ -1,11 +1,16 @@
 {
-    "baseUrl": "../js/libs",
-    "name": "../start",
+    "baseUrl": "../bower_components",
+    "name": "../js/start",
     "out": "combined.js",
     "findNestedDependencies": true,
     "paths": {
-        "app": "../app",
-        "templates": "../../templates"
+        "app": "../js/app",
+        "templates": "../templates",
+        "backbone": "backbone/backbone",
+        "marionette": "marionette/lib/backbone.marionette",
+        "jquery": "jquery/dist/jquery",
+        "text": "requirejs-text/text",
+        "underscore": "underscore/underscore"
     },
 	"shim": {
 		"underscore": {
