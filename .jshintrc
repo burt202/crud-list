@@ -59,6 +59,7 @@
     "white"         : false,
 
     "predef": [
+        "console",
         "define",
         "require",
         "confirm",
