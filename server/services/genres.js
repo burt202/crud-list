@@ -16,9 +16,17 @@ var GenresService = function (db) {
 		return errors;
 	};
 
-	this.get = function (callback) {
+	this.getAll = function (callback) {
 		this.db.collection('genres', function(err, collection) {
 			collection.find().toArray(function(err, data) {
+				callback(data);
+			});
+		});
+	};
+
+	this.get = function (id, callback) {
+		this.db.collection('genres', function(err, collection) {
+			collection.find({_id: new mongodb.ObjectID(id)}).toArray(function(err, data) {
 				callback(data);
 			});
 		});
