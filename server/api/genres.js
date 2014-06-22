@@ -1,20 +1,20 @@
 var GenresService = require(__dirname + '/../services/genres');
 
-module.exports = {
-	getAction: function (req, res, db) {
-		var genresService = new GenresService(db);
-		genresService.get(function (data) {
+var GenresController = function (db) {
+	this.genresService = new GenresService(db);
+
+	this.getAction = function (req, res) {
+		this.genresService.get(function (data) {
 			res.set('Content-Type', 'application/json');
 			res.send(200, data);
 		});
-	},
+	};
 
-	postAction: function (req, res, db) {
-		var genresService = new GenresService(db),
-			data = {
+	this.postAction = function (req, res) {
+		var data = {
 				name: req.body.name || ''
 			},
-			errors = genresService.validate(data);
+			errors = this.genresService.validate(data);
 
 		if (errors.length > 0) {
 			res.set('Content-Type', 'application/json');
@@ -22,19 +22,18 @@ module.exports = {
 				errors: errors
 			});
 		} else {
-			genresService.add(data, function (data) {
+			this.genresService.add(data, function (data) {
 				res.set('Content-Type', 'application/json');
 				res.send(201, data);
 			});
 		}
-	},
+	};
 
-	putAction: function (req, res, db, id) {
-		var genresService = new GenresService(db),
-			data = {
+	this.putAction = function (req, res) {
+		var data = {
 				name: req.body.name || ''
 			},
-			errors = genresService.validate(data);
+			errors = this.genresService.validate(data);
 
 		if (errors.length > 0) {
 			res.set('Content-Type', 'application/json');
@@ -42,18 +41,19 @@ module.exports = {
 				errors: errors
 			});
 		} else {
-			genresService.update(id, data, function (data) {
+			this.genresService.update(req.param('genre_id'), data, function (data) {
 				res.set('Content-Type', 'application/json');
 				res.send(200, data);
 			});
 		}
-	},
+	};
 
-	deleteAction: function (req, res, db, id) {
-		var genresService = new GenresService(db);
-		genresService.remove(id, function () {
+	this.deleteAction = function (req, res) {
+		this.genresService.remove(req.param('genre_id'), function () {
 			res.set('Content-Type', 'application/json');
 			res.send(200, {});
 		});
-	}
+	};
 };
+
+module.exports = GenresController;
