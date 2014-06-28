@@ -17,8 +17,11 @@ mongoclient.open(function(err, mongoclient) {
 	app.use(express.static(__dirname + '/public'));
 
 	app.use('/api', apiRoutes);
+	app.get('/api-desc', controller.apiDesc.bind(controller));
+	app.get('/api-docs', controller.apiDocs.bind(controller));
 	app.get('*', controller.load.bind(controller));
 
 	app.listen(config.port, config.domain);
-	console.log('Running at http://' + config.domain + ':' + config.port);
+	console.log('App running at http://' + config.domain + ':' + config.port);
+	console.log('API docs running at http://' + config.domain + ':' + config.port + '/api-docs');
 });

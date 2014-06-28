@@ -8,6 +8,7 @@
     "marionette": "latest",
     "requirejs": "latest",
     "requirejs-text": "latest",
-    "underscore": "latest"
+    "underscore": "latest",
+    "swagger-ui": "latest"
   }
 }
