@@ -19,7 +19,7 @@ gulp.task('default', function() {
 gulp.task('init', function () {
 	nodemon({
 		script: 'app.js',
-		options: ''
+		ext: 'js json'
 	});
 });
 
