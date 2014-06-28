@@ -20,7 +20,7 @@ gulp.task('init', function () {
 	nodemon({
 		script: 'app.js',
 		ext: 'js json'
-	});
+	}).on('change', ['jshint']);
 });
 
 gulp.task('build', function () {
@@ -43,8 +43,7 @@ gulp.task('jshint', function() {
 			'public/js/**',
 			'server/**',
 			'tests/**',
-			'!public/build/*.js',
-			'!public/js/libs/**'
+			'!public/build/*.js'
 		])
 		.pipe(jshint('.jshintrc'))
 		.pipe(jshint.reporter('jshint-stylish'));
