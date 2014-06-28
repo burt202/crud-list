@@ -14,7 +14,7 @@ var GenresController = function (db) {
 		var data = {
 				name: req.body.name || ''
 			},
-			errors = this.genresService.validate(data);
+			errors = this.genresService.validate(null, ['name'], data);
 
 		if (errors.length > 0) {
 			res.set('Content-Type', 'application/json');

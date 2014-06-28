@@ -20,7 +20,15 @@
           "method": "POST",
           "summary": "Add a new genre",
           "nickname": "addNewGenre",
-          "parameters": []
+          "parameters": [
+            {
+              "name": "Data",
+              "description": "Data of genre to be added",
+              "required": true,
+              "type": "string",
+              "paramType": "body"
+            }
+          ]
         }
       ]
     },
@@ -52,6 +60,13 @@
               "required": true,
               "type": "string",
               "paramType": "path"
+            },
+            {
+              "name": "Data",
+              "description": "Data of genre to be updated",
+              "required": true,
+              "type": "string",
+              "paramType": "body"
             }
           ]
         },

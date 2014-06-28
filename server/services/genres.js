@@ -3,17 +3,37 @@ var mongodb = require('mongodb');
 var GenresService = function (db) {
 	this.db = db;
 
-	this.validate = function (data) {
+	this.validate = function (id, required, data) {
 		var errors = [];
 
-		if (data.name.length === 0) {
+		if (id && !this.isValidObjectID(id)) {
 			errors.push({
-				field: 'name',
-				message: 'You must complete this field'
+				field: 'id',
+				message: 'You must provide a valid id'
 			});
 		}
 
+		required.forEach(function (fieldName) {
+			if (!data[fieldName]) {
+				errors.push({
+					field: 'name',
+					message: 'You must complete this field'
+				});
+			}
+		});
+
 		return errors;
+	};
+
+	this.isValidObjectID = function (str) {
+		var len = str.length,
+			valid = false;
+
+		if (len === 12 || len === 24) {
+			valid = /^[0-9a-fA-F]+$/.test(str);
+		}
+
+		return valid;
 	};
 
 	this.getAll = function (callback) {
