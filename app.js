@@ -5,7 +5,7 @@ var express = require('express'),
 	config = JSON.parse(fs.readFileSync(__dirname + '/configs/app.json', 'utf8')),
 	IndexController = require(__dirname + '/server/index'),
 	app = express(),
-	mongoclient = new MongoClient(new Server(config.databaseHost, config.databasePort), {native_parser: true}),
+	mongoclient = new MongoClient(new Server(config.databaseHost, config.databasePort), {'native_parser': true}),
 	bodyParser = require('body-parser');
 
 mongoclient.open(function(err, mongoclient) {
@@ -13,6 +13,7 @@ mongoclient.open(function(err, mongoclient) {
 		controller = new IndexController(config),
 		apiRoutes = require(__dirname + '/server/api-routes')(config, db);
 
+	/*jshint -W030 */
 	app.use(bodyParser()),
 	app.use(express.static(__dirname + '/public'));
 
