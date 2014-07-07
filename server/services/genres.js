@@ -37,42 +37,34 @@ var GenresService = function (db) {
 	};
 
 	this.getAll = function (callback) {
-		this.db.collection('genres', function(err, collection) {
-			collection.find().toArray(function(err, data) {
+		this.db.genres.find()
+			.sort( { name: 1 } )
+			.toArray(function(err, data) {
 				callback(data);
 			});
-		});
 	};
 
 	this.get = function (id, callback) {
-		this.db.collection('genres', function(err, collection) {
-			collection.find({_id: new mongodb.ObjectID(id)}).toArray(function(err, data) {
-				callback(data);
-			});
+		this.db.genres.find({_id: new mongodb.ObjectID(id)}).toArray(function(err, data) {
+			callback(data);
 		});
 	};
 
 	this.add = function (data, callback) {
-		this.db.collection('genres', function(err, collection) {
-			collection.insert(data, {safe: true}, function (err, result) {
-				callback(result[0]);
-			});
+		this.db.genres.insert(data, {safe: true}, function (err, result) {
+			callback(result[0]);
 		});
 	};
 
 	this.update = function (id, data, callback) {
-		this.db.collection('genres', function(err, collection) {
-			collection.update({_id: new mongodb.ObjectID(id)}, data, function () {
-				callback(data);
-			});
+		this.db.genres.update({_id: new mongodb.ObjectID(id)}, data, function () {
+			callback(data);
 		});
 	};
 
 	this.remove = function (id, callback) {
-		this.db.collection('genres', function(err, collection) {
-			collection.remove({_id: new mongodb.ObjectID(id)}, function() {
-				callback();
-			});
+		this.db.genres.remove({_id: new mongodb.ObjectID(id)}, function() {
+			callback();
 		});
 	};
 };

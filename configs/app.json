@@ -4,7 +4,8 @@
   "type": "development",
   "databaseHost": "localhost",
   "databasePort": 27017,
-  "databaseName": "test",
+  "databaseName": "cl-prod",
+  "testDatabaseName": "cl-test",
   "apiLogging": false,
   "swaggerUrl": "/bower_components/swagger-ui/dist/index.html"
 }

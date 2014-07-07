@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 	nodemon = require('gulp-nodemon'),
 	jeditor = require('gulp-json-editor'),
 	shell = require('gulp-shell'),
-	jasmine = require('gulp-jasmine');
+	jasmineNode = require('gulp-jasmine');
 
 gulp.task('default', function() {
 	gulp.run('init');
@@ -31,9 +31,16 @@ gulp.task('unbuild', function () {
 	gulp.run('type-development');
 });
 
-gulp.task('jasmine', function() {
+gulp.task('client-tests', function() {
 	gulp.src('tests/**')
-	.pipe(jasmine({
+	.pipe(jasmineNode({
+		verbose: true
+	}));
+});
+
+gulp.task('api-tests', function() {
+	gulp.src('tests/api/**')
+	.pipe(jasmineNode({
 		verbose: true
 	}));
 });
