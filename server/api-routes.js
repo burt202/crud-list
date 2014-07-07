@@ -11,7 +11,7 @@ module.exports = function (config, db) {
 		next();
 	});
 
-	// GENRES
+	// genres
 
 	var Genres = require(controllerDir + 'genres');
 	var genres = new Genres(db);
@@ -20,7 +20,7 @@ module.exports = function (config, db) {
 		.get(genres.getAction.bind(genres))
 		.post(genres.postAction.bind(genres));
 
-	// GENRE
+	// genre
 
 	var Genre = require(controllerDir + 'genre');
 	var genre = new Genre(db);

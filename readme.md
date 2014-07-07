@@ -11,6 +11,7 @@ A simple NodeJS app, that I am using as a playground to try out and new technolo
 * Client-side testing - [Jasmine](http://pivotal.github.io/jasmine/)
 * Client-side dependency manager - [Bower](http://bower.io/)
 * API documentation - [Swagger UI](https://github.com/wordnik/swagger-ui)
+* API testing - [FrisbyJS](http://frisbyjs.com/)
 
 ### Installation
 
@@ -21,7 +22,7 @@ A simple NodeJS app, that I am using as a playground to try out and new technolo
 ### Useful Gulp Tasks
 
 * `gulp build` - to bundle javascript and change config setting to `production`
-* `gulp jasmine` - to run client-side unit tests
+* `gulp client-tests` - to run client-side unit tests
 
 ### API Documentation
 

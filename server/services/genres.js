@@ -38,7 +38,7 @@ var GenresService = function (db) {
 
 	this.getAll = function (callback) {
 		this.db.genres.find()
-			.sort( { name: 1 } )
+			.sort({ name: 1 })
 			.toArray(function(err, data) {
 				callback(data);
 			});
