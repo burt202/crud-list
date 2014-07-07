@@ -89,6 +89,8 @@
         "describe",
         "expect",
         "spyOn",
-        "beforeEach"
+        "beforeEach",
+        "afterEach",
+        "jasmine"
     ]
 }
