@@ -29,7 +29,7 @@ var IndexController = function (config) {
 	};
 
 	this.apiDocs = function (req, res) {
-		res.redirect(this.config.swaggerUrl);
+		res.redirect(this.config.swaggerPath);
 	};
 };
 

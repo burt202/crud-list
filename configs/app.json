@@ -7,5 +7,6 @@
   "databaseName": "cl-prod",
   "testDatabaseName": "cl-test",
   "apiLogging": false,
-  "swaggerUrl": "/bower_components/swagger-ui/dist/index.html"
+  "swaggerPath": "/bower_components/swagger-ui/dist/index.html",
+  "rjsPath": "/bower_components/rjs/dist/r.js"
 }

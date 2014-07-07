@@ -9,6 +9,7 @@
     "requirejs": "latest",
     "requirejs-text": "latest",
     "underscore": "latest",
-    "swagger-ui": "latest"
+    "swagger-ui": "latest",
+    "rjs": "2.1.14"
   }
 }
