@@ -4,7 +4,6 @@ define([], function () {
 		paths: {
 			app: '../js/app',
 			templates: '../templates',
-			tests: '../tests/',
 			backbone: 'backbone/backbone',
 			marionette: 'marionette/lib/backbone.marionette',
 			jquery: 'jquery/dist/jquery',
