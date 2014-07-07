@@ -32,7 +32,7 @@ gulp.task('unbuild', function () {
 });
 
 gulp.task('client-tests', function() {
-	gulp.src('tests/**')
+	gulp.src('tests/client/**')
 	.pipe(jasmineNode({
 		verbose: true
 	}));

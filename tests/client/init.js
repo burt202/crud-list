@@ -5,7 +5,7 @@ global.document = jsdom.jsdom('<html><body></body></html>');
 global.window = global.document.parentWindow;
 
 requirejs.config({
-	baseUrl: __dirname + '/../public/bower_components',
+	baseUrl: __dirname + '/../../public/bower_components',
 	paths: {
 		app: '../js/app',
 		templates: '../templates',
