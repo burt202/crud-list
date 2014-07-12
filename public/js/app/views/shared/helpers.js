@@ -5,13 +5,19 @@ define([
 	return {
 		showValidationErrors: function (element, errors) {
 			$.each(errors, function (index, errorObj) {
-				var fieldObj = element.find('#' + errorObj.field);
+				var fieldObj = element.find('#' + errorObj.field),
+					errorElement;
 
 				if ($(fieldObj).siblings('.error').length > 0) {
 					return;
 				}
 
-				$('<p class="error">' + errorObj.message + '</p>').insertAfter(fieldObj);
+				errorElement = $('<p />', {
+					class: 'error',
+					html: errorObj.message
+				});
+
+				errorElement.insertAfter(fieldObj);
 
 				fieldObj.on('focus', function () {
 					$(this).next('.error').remove();
@@ -26,8 +32,8 @@ define([
 				notificationLength = $('.notification').length,
 				pixelsFromTop = ((notificationLength + 1) * (notificationHeight + notificationMargin)) - notificationHeight,
 				notificationElement = $('<div />', {
-					'class': 'notification notification-' + type,
-					'html': message
+					class: 'notification notification-' + type,
+					html: message
 				});
 
 			if (notificationLength >= maxNumber) {
