@@ -46,7 +46,7 @@ var GenresService = function (db) {
 
 	this.get = function (id, callback) {
 		this.db.genres.find({_id: new mongodb.ObjectID(id)}).toArray(function(err, data) {
-			callback(data);
+			callback(data[0]);
 		});
 	};
 

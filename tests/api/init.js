@@ -4,15 +4,19 @@ var fs = require('fs'),
     config = JSON.parse(fs.readFileSync(__dirname + '/../../configs/app.json', 'utf8')),
     database = new Database(config.databaseHost + ':' + config.databasePort, config.testDatabaseName);
 
-var deferred = q.defer();
+var connectAndCleanDatabase = function () {
+    var deferred = q.defer();
 
-database.connect(['genres'])
-    .then(database.clean.bind(database))
-    .then(function () {
-        deferred.resolve({
-            db: database,
-            apiUrl: 'http://' + config.domain + ':' + config.port + '/api'
+    database.connect(['genres'])
+        .then(database.clean.bind(database))
+        .then(function () {
+            deferred.resolve();
         });
-    });
 
-module.exports = deferred.promise;
+    return deferred.promise;
+};
+
+module.exports = {
+    connectAndCleanDatabase: connectAndCleanDatabase,
+    apiUrl: 'http://' + config.domain + ':' + config.port + '/api'
+};

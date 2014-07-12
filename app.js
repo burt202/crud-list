@@ -27,4 +27,7 @@ database.connect(['genres'])
         console.log('App running at http://' + config.domain + ':' + config.port);
         console.log('API docs running at http://' + config.domain + ':' + config.port + '/api-docs');
         console.log('Database Name: ' + databaseName);
+    })
+    .fail(function (/* err */) {
+        console.log('There was an error connecting to the database');
     });

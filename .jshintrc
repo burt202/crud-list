@@ -1,6 +1,7 @@
 {
     /* Enforcing Options */
 
+    "bitwise"       : true,
     "camelcase"     : true,
     "curly"         : true,
     "eqeqeq"        : true,
@@ -13,7 +14,7 @@
     "newcap"        : true,
     "noarg"         : true,
     "noempty"       : true,
-    "nonbsp"         : true,
+    "nonbsp"        : true,
     "nonew"         : true,
     "plusplus"      : false,
     "quotmark"      : true,
@@ -44,7 +45,7 @@
     "laxbreak"      : false,
     "laxcomma"      : false,
     "loopfunc"      : false,
-    "maxerr"       : 100,
+    "maxerr"        : 100,
     "moz"           : false,
     "multistr"      : false,
     "notypeof"      : false,
@@ -91,6 +92,7 @@
         "spyOn",
         "beforeEach",
         "afterEach",
-        "jasmine"
+        "jasmine",
+        "before"
     ]
 }

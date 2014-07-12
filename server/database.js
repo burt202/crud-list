@@ -24,12 +24,18 @@ Database.prototype.connect = function (collections) {
 
 Database.prototype.clean = function () {
     var self = this;
+    var promises = [];
 
     _.each(this.collections, function(collection) {
-        self[collection].drop();
+        var promise = q.defer();
+        promises.push(promise);
+
+        self[collection].remove({}, function () {
+            promise.resolve(true);
+        });
     });
 
-    return q();
+    return q.all(promises);
 };
 
 module.exports = Database;

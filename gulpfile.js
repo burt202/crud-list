@@ -40,12 +40,9 @@ gulp.task('client-tests', function() {
 	}));
 });
 
-gulp.task('api-tests', function() {
-	gulp.src('tests/api/**')
-	.pipe(jasmineNode({
-		verbose: true
-	}));
-});
+gulp.task('api-tests', shell.task([
+	'mocha tests/api/** --reporter=spec'
+]));
 
 gulp.task('jshint', function() {
 	gulp.src([
