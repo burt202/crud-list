@@ -26,7 +26,7 @@ gulp.task('init', function () {
 });
 
 gulp.task('build', function () {
-	gulp.run('bundle-js', 'type-production');
+	gulp.run('compile-less', 'bundle-js', 'type-production');
 });
 
 gulp.task('unbuild', function () {

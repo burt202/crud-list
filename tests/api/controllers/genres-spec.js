@@ -10,7 +10,7 @@ describe('Genres API', function () {
         setup.connectAndCleanDatabase().then(done);
     });
 
-    it('should validate genre on creation', function (done) {
+    it('should return error if genre name is empty on POST', function (done) {
         request(setup.apiUrl)
             .post('/genres')
             .send({name: ''})
@@ -63,7 +63,7 @@ describe('Genres API', function () {
             });
     });
 
-    it('should return all genres', function (done) {
+    it('should return all genres in correct order', function (done) {
         request(setup.apiUrl)
             .get('/genres')
             .end(function(err, res) {
