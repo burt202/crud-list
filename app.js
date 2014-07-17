@@ -17,9 +17,12 @@ database.connect(['genres'])
         app.use(bodyParser()),
         app.use(express.static(__dirname + '/public'));
 
+        if (config.type === 'development') {
+            app.get('/api-desc', controller.apiDesc.bind(controller));
+            app.get('/api-docs', controller.apiDocs.bind(controller));
+        }
+
         app.use('/api', apiRoutes);
-        app.get('/api-desc', controller.apiDesc.bind(controller));
-        app.get('/api-docs', controller.apiDocs.bind(controller));
         app.get('*', controller.load.bind(controller));
 
         app.listen(config.port, config.domain);
