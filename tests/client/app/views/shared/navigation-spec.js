@@ -1,5 +1,5 @@
-var requirejs = require('../../../../specrunner-requirejs');
-require('../../../../specrunner-jquery');
+var requirejs = require('../../../specrunner-requirejs');
+require('../../../specrunner-jquery');
 
 var expect = require('chai').expect; /* jshint expr:true */
 var Navigation = requirejs('app/views/shared/navigation');

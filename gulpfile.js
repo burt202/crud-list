@@ -35,14 +35,14 @@ gulp.task('unbuild', function () {
 
 gulp.task('coverage', function () {
     gulp.src('')
-        .pipe(shell('./node_modules/istanbul/lib/cli.js cover -x **/node_modules/** -x **/public/bower_components/** --hook-run-in-context --report html --print both ./node_modules/mocha/bin/_mocha -- --recursive tests/client/js/'))
+        .pipe(shell('./node_modules/istanbul/lib/cli.js cover -x **/node_modules/** -x **/public/bower_components/** --hook-run-in-context --report html --print both ./node_modules/mocha/bin/_mocha -- --recursive tests/client/app/'))
         .on('finish', function () {
             console.log('Breakdown: file://' + __dirname + '/coverage/index.html');
         });
 });
 
 gulp.task('client-tests', shell.task([
-    './node_modules/mocha/bin/_mocha --reporter=spec --recursive tests/client/js/**'
+    './node_modules/mocha/bin/_mocha --reporter=spec --recursive tests/client/app/**'
 ]));
 
 gulp.task('api-tests', shell.task([
