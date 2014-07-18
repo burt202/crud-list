@@ -25,36 +25,27 @@ define([
 			});
 		},
 
-		showNotificationMessage: function (type, message) {
+		showNotificationMessage: function (type, message, removeAfter) {
 			var notificationHeight = 40,
 				notificationMargin = 10,
-				maxNumber = 5,
-				notificationLength = $('.notification').length,
-				pixelsFromTop = ((notificationLength + 1) * (notificationHeight + notificationMargin)) - notificationHeight,
 				notificationElement = $('<div />', {
 					class: 'notification notification-' + type,
 					html: message
 				});
 
-			if (notificationLength >= maxNumber) {
+			if ($('.notification').length >= 1) {
 				return;
 			}
 
+			removeAfter = removeAfter || 5000;
 			$('body').prepend(notificationElement);
-			notificationElement.animate({
-				top: pixelsFromTop + 'px'
-			}, 300, function () {
-				setTimeout(function () {
-					notificationElement.animate({
-						top: '-' + notificationHeight + 'px'
-					}, 300, function () {
-						$(this).remove();
-						$('.notification').animate({
-							top: '-='+ (notificationHeight + notificationMargin) + 'px'
-						}, 300);
-					});
-				}, 5000);
-			});
+
+			notificationElement
+				.animate({top: notificationMargin + 'px'}, 300)
+				.delay(removeAfter)
+				.animate({top: '-' + notificationHeight + 'px'}, 300, function () {
+					notificationElement.remove();
+				});
 		}
 	};
 });
