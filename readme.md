@@ -8,7 +8,7 @@ A simple NodeJS app, that I am using as a playground to try out and new technolo
 * Database - [MongoDB](http://www.mongodb.org/)
 * Client-side - [BackboneJS](http://backbonejs.org/) (with [MarionetteJS](http://marionettejs.com/)), [RequireJS](http://requirejs.org/)
 * Task Runner - [GulpJS](http://gulpjs.com/)
-* Client-side testing - [Jasmine](http://pivotal.github.io/jasmine/)
+* Client-side testing - [Mocha](http://visionmedia.github.io/mocha/), [Chai](http://chaijs.com/) and [Sinon](http://sinonjs.org/)
 * Client-side dependency manager - [Bower](http://bower.io/)
 * API documentation - [Swagger UI](https://github.com/wordnik/swagger-ui)
 * API testing - [Supertest](https://github.com/visionmedia/supertest)

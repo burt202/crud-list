@@ -7,8 +7,7 @@ var fs = require('fs'),
 	rename = require('gulp-rename'),
 	nodemon = require('gulp-nodemon'),
 	jeditor = require('gulp-json-editor'),
-	shell = require('gulp-shell'),
-	jasmineNode = require('gulp-jasmine');
+	shell = require('gulp-shell');
 
 gulp.task('default', function() {
 	gulp.run('init');
@@ -33,23 +32,23 @@ gulp.task('unbuild', function () {
 	gulp.run('type-development');
 });
 
-gulp.task('client-tests', function() {
-	gulp.src('tests/client/**')
-	.pipe(jasmineNode({
-		verbose: true
-	}));
-});
+gulp.task('coverage', shell.task([
+	'./node_modules/istanbul/lib/cli.js cover -x **/node_modules/** -x **/public/bower_components/** --hook-run-in-context --report html --print both ./node_modules/mocha/bin/_mocha -- --recursive tests/client/js/'
+]));
+
+gulp.task('client-tests', shell.task([
+	'./node_modules/mocha/bin/_mocha --reporter=spec --recursive tests/client/js/**'
+]));
 
 gulp.task('api-tests', shell.task([
-	'mocha tests/api/** --reporter=spec'
+	'./node_modules/mocha/bin/_mocha --reporter=spec --recursive tests/api/**'
 ]));
 
 gulp.task('jshint', function() {
 	gulp.src([
 			'public/js/**',
 			'server/**',
-			'tests/**',
-			'!public/build/*.js'
+			'tests/**'
 		])
 		.pipe(jshint('.jshintrc'))
 		.pipe(jshint.reporter('jshint-stylish'));

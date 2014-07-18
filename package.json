@@ -2,10 +2,6 @@
   "name": "crud-list",
   "version": "0.3.0",
   "private": true,
-  "scripts": {
-    "test": "./node_modules/mocha/bin/_mocha --recursive --reporter spec tests/client/js",
-    "coverage": "./node_modules/istanbul/lib/cli.js cover -x '**/vendor/**' --hook-run-in-context --report html --print both --dir public/js/coverage ./node_modules/mocha/bin/_mocha -- --recursive tests/js/"
-  },
   "dependencies": {
     "express": "4.4.3",
     "swig": "1.1.0",
@@ -24,7 +20,6 @@
     "gulp-nodemon": "~1.0.4",
     "gulp-json-editor": "~2.0.2",
     "gulp-shell": "~0.2.4",
-    "gulp-jasmine": "~0.1.4",
     "jshint-stylish": "~0.1.5",
     "requirejs": "~2.1.11",
     "jsdom": "~0.10.1",
