@@ -1,4 +1,4 @@
-var requirejs = require('requirejs');
+/*var requirejs = require('requirejs');
 require('../../../../init');
 
 var Backbone = requirejs('backbone'),
@@ -48,4 +48,4 @@ describe('Genre Content', function() {
 			expect(Vent.trigger).toHaveBeenCalledWith('new:genre');
 		});
 	});
-});
+});*/

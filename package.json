@@ -2,6 +2,10 @@
   "name": "crud-list",
   "version": "0.3.0",
   "private": true,
+  "scripts": {
+    "test": "./node_modules/mocha/bin/_mocha --recursive --reporter spec tests/client/js",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover -x '**/vendor/**' --hook-run-in-context --report html --print both --dir public/js/coverage ./node_modules/mocha/bin/_mocha -- --recursive tests/js/"
+  },
   "dependencies": {
     "express": "4.4.3",
     "swig": "1.1.0",
@@ -26,6 +30,7 @@
     "jsdom": "~0.10.1",
     "supertest": "~0.13.0",
     "chai": "~1.9.1",
-    "mocha": "~1.20.1"
+    "mocha": "~1.20.1",
+    "istanbul": "~0.3.0"
   }
 }

@@ -88,11 +88,6 @@
         "define",
         "it",
         "describe",
-        "expect",
-        "spyOn",
-        "beforeEach",
-        "afterEach",
-        "jasmine",
         "before"
     ]
 }

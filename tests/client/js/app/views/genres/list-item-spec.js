@@ -1,4 +1,4 @@
-var requirejs = require('requirejs');
+/*var requirejs = require('requirejs');
 require('../../../../init');
 
 var ListItem = requirejs('app/views/genres/list-item'),
@@ -32,4 +32,4 @@ describe('Genre List Item', function() {
 			expect(Vent.trigger).toHaveBeenCalledWith('delete:genre', listItem.model);
 		});
 	});
-});
+});*/

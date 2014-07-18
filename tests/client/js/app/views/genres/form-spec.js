@@ -1,4 +1,4 @@
-var requirejs = require('requirejs');
+/*var requirejs = require('requirejs');
 require('../../../../init');
 
 var Backbone = requirejs('backbone'),
@@ -53,4 +53,4 @@ describe('Genre Form', function() {
 			expect(Vent.trigger).toHaveBeenCalledWith('hide:genre-form');
 		});
 	});
-});
+});*/

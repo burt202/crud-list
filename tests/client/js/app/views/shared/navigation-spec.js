@@ -1,6 +1,7 @@
-var requirejs = require('requirejs');
-require('../../../../init');
+var requirejs = require('../../../../specrunner-requirejs');
+require('../../../../specrunner-jquery');
 
+var expect = require('chai').expect; /* jshint expr:true */
 var Navigation = requirejs('app/views/shared/navigation');
 
 describe('Navigation', function() {
@@ -8,7 +9,7 @@ describe('Navigation', function() {
 		it('should be able to be instantiated', function() {
 			var navigation = new Navigation();
 
-			expect(navigation).toBeTruthy();
+			expect(navigation).to.be.defined;
 		});
 	});
 
@@ -18,7 +19,7 @@ describe('Navigation', function() {
 			navigation.render();
 			navigation.setActive('home');
 
-			expect(navigation.ui.listItem.filter('.home').hasClass('active')).toBe(true);
+			expect(navigation.ui.listItem.filter('.home').hasClass('active')).to.be.true;
 		});
 
 		it('should remove active classes from other menu links', function() {
@@ -27,7 +28,7 @@ describe('Navigation', function() {
 			navigation.setActive('home');
 			navigation.setActive('genres');
 
-			expect(navigation.ui.listItem.filter('.home').hasClass('active')).toBe(false);
+			expect(navigation.ui.listItem.filter('.home').hasClass('active')).to.be.false;
 		});
 	});
 });
