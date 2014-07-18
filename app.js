@@ -27,9 +27,13 @@ database.connect(['genres'])
 
         app.listen(config.port, config.domain);
 
+        var currDate = new Date();
+        var dateTime = currDate.getDate() + '/' + (currDate.getMonth() +1 ) + '/' + currDate.getFullYear() + ' '  + currDate.getHours() + ':'  + currDate.getMinutes() + ':' + currDate.getSeconds();
+
         console.log('App running at http://' + config.domain + ':' + config.port);
         console.log('API docs running at http://' + config.domain + ':' + config.port + '/api-docs');
         console.log('Database Name: ' + databaseName);
+        console.log('Timestamp: ' + dateTime);
     })
     .fail(function (/* err */) {
         console.log('There was an error connecting to the database');
