@@ -1,9 +1,11 @@
-/*var requirejs = require('requirejs');
-require('../../../../init');
+var requirejs = require('../../../../specrunner-requirejs');
+require('../../../../specrunner-jquery');
 
-var Backbone = requirejs('backbone'),
-	Form = requirejs('app/views/genres/form'),
-	Vent = requirejs('app/views/genres/vent');
+var expect = require('chai').expect; /* jshint expr:true */
+var sinon = require('sinon');
+var Backbone = requirejs('backbone');
+var Form = requirejs('app/views/genres/form');
+var Vent = requirejs('app/views/genres/vent');
 
 describe('Genre Form', function() {
 	var form;
@@ -19,7 +21,7 @@ describe('Genre Form', function() {
 
 	describe('Basic Instantiation', function() {
 		it('should be able to be instantiated', function() {
-			expect(form).toBeTruthy();
+			expect(form).to.be.defined;
 		});
 	});
 
@@ -27,10 +29,11 @@ describe('Genre Form', function() {
 		it('should trigger an event', function() {
 			form.render();
 			form.ui.nameInput.val('foobar');
-			spyOn(Vent, 'trigger');
+			var spy = sinon.spy(Vent, 'trigger');
 			form.addButton();
 
-			expect(Vent.trigger).toHaveBeenCalledWith('add:genre', form.model, {name: 'foobar'}, form.$el);
+			expect(spy.calledWith('add:genre', form.model, {name: 'foobar'}, form.$el)).to.be.true;
+			Vent.trigger.restore();
 		});
 	});
 
@@ -38,19 +41,21 @@ describe('Genre Form', function() {
 		it('should trigger an event', function() {
 			form.render();
 			form.ui.nameInput.val('foobar');
-			spyOn(Vent, 'trigger');
+			var spy = sinon.spy(Vent, 'trigger');
 			form.updateButton();
 
-			expect(Vent.trigger).toHaveBeenCalledWith('update:genre', form.model, {name: 'foobar'}, form.$el);
+			expect(spy.calledWith('update:genre', form.model, {name: 'foobar'}, form.$el)).to.be.true;
+			Vent.trigger.restore();
 		});
 	});
 
 	describe('Cancel Button', function() {
 		it('should trigger an event', function() {
-			spyOn(Vent, 'trigger');
+			var spy = sinon.spy(Vent, 'trigger');
 			form.cancelButton();
 
-			expect(Vent.trigger).toHaveBeenCalledWith('hide:genre-form');
+			expect(spy.calledWith('hide:genre-form')).to.be.true;
+			Vent.trigger.restore();
 		});
 	});
-});*/
+});

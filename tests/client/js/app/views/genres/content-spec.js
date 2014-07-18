@@ -1,16 +1,18 @@
-/*var requirejs = require('requirejs');
-require('../../../../init');
+var requirejs = require('../../../../specrunner-requirejs');
+require('../../../../specrunner-jquery');
 
-var Backbone = requirejs('backbone'),
-	Content = requirejs('app/views/genres/content'),
-	Vent = requirejs('app/views/genres/vent');
+var expect = require('chai').expect; /* jshint expr:true */
+var sinon = require('sinon');
+var Backbone = requirejs('backbone');
+var Content = requirejs('app/views/genres/content');
+var Vent = requirejs('app/views/genres/vent');
 
 describe('Genre Content', function() {
 	describe('Basic Instantiation', function() {
 		it('should be able to be instantiated', function() {
 			var content = new Content();
 
-			expect(content).toBeTruthy();
+			expect(content).to.be.defined;
 		});
 	});
 
@@ -21,7 +23,7 @@ describe('Genre Content', function() {
 			});
 			content.render();
 
-			expect(content.$(content.itemViewContainer).html()).toEqual('<li>No items</li>');
+			expect(content.$(content.itemViewContainer).html()).to.equal('<li>No items</li>');
 		});
 	});
 
@@ -35,17 +37,18 @@ describe('Genre Content', function() {
 				genreCount: 2
 			};
 
-			expect(actual).toEqual(expected);
+			expect(actual).to.deep.equal(expected);
 		});
 	});
 
 	describe('New Button', function() {
 		it('should trigger an event', function() {
 			var content = new Content();
-			spyOn(Vent, 'trigger');
+			var spy = sinon.spy(Vent, 'trigger');
 			content.newButton();
 
-			expect(Vent.trigger).toHaveBeenCalledWith('new:genre');
+			expect(spy.calledWith('new:genre')).to.be.true;
+			Vent.trigger.restore();
 		});
 	});
-});*/
+});
