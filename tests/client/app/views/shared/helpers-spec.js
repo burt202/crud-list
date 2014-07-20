@@ -41,4 +41,22 @@ describe('Helpers', function () {
 			expect(element.find('.error').length).to.equal(0);
 		});
 	});
+
+	describe('Notification Messages', function () {
+		it('should show a notification', function () {
+			Helpers.showNotificationMessage('success', 'test message');
+
+			expect($('.notification').length).to.equal(1);
+			expect($('.notification').html()).to.equal('test message');
+			expect($('.notification').hasClass('notification')).to.be.true;
+			expect($('.notification').hasClass('notification-success')).to.be.true;
+		});
+
+		it('should only allow one notification on screen at once', function () {
+			Helpers.showNotificationMessage('success', 'test message');
+			Helpers.showNotificationMessage('success', 'another message');
+
+			expect($('.notification').length).to.equal(1);
+		});
+	});
 });
