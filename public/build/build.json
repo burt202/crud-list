@@ -2,7 +2,7 @@
     "baseUrl": "../bower_components",
     "name": "../js/start",
     "out": "combined.js",
-    "findNestedDependencies": true,
+    "wrapShim": true,
     "paths": {
         "app": "../js/app",
         "templates": "../templates",
