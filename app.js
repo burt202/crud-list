@@ -28,13 +28,21 @@ database.connect(['genres'])
         app.listen(config.port, config.domain);
 
         var currDate = new Date();
-        var dateTime = currDate.getDate() + '/' + (currDate.getMonth() +1 ) + '/' + currDate.getFullYear() + ' '  + currDate.getHours() + ':'  + currDate.getMinutes() + ':' + currDate.getSeconds();
 
         console.log('App running at http://' + config.domain + ':' + config.port);
         console.log('API docs running at http://' + config.domain + ':' + config.port + '/api-docs');
         console.log('Database Name: ' + databaseName);
-        console.log('Timestamp: ' + dateTime);
+        console.log('Timestamp: ' + currDate.today() + ' ' + currDate.timeNow());
     })
     .fail(function (/* err */) {
         console.log('There was an error connecting to the database');
     });
+
+/* jshint freeze:false */
+Date.prototype.today = function () {
+    return ((this.getDate() < 10) ? '0' : '') + this.getDate() + '/' + (((this.getMonth() + 1) < 10) ? '0' : '') + (this.getMonth() + 1) + '/' + this.getFullYear();
+};
+
+Date.prototype.timeNow = function () {
+    return ((this.getHours() < 10) ? '0' : '') + this.getHours() + ':' + ((this.getMinutes() < 10) ? '0' : '') + this.getMinutes() + ':' + ((this.getSeconds() < 10) ? '0' : '') + this.getSeconds();
+};
