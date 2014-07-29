@@ -29,6 +29,7 @@ define([
 
 		emptyView: Marionette.ItemView.extend({
 			tagName: 'li',
+			className: 'empty-row',
 			render: function () {
 				this.$el.html('No items');
 			}
