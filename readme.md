@@ -1,17 +1,19 @@
 ## CRUD List App
 
-A simple NodeJS app, that I am using as a playground to try out and new technologies and frameworks. Expect the list below to grow.
+A simple NodeJS app, that I am using as a playground to try out and new technologies and frameworks.
 
-### Technologies Used
+### Technologies Currently Used
 
 * Server-side - [NodeJS](http://nodejs.org/)
 * Database - [MongoDB](http://www.mongodb.org/)
 * Client-side - [BackboneJS](http://backbonejs.org/) (with [MarionetteJS](http://marionettejs.com/)), [RequireJS](http://requirejs.org/)
 * Task Runner - [GulpJS](http://gulpjs.com/)
 * Client-side testing - [Mocha](http://visionmedia.github.io/mocha/), [Chai](http://chaijs.com/) and [Sinon](http://sinonjs.org/)
+* Client-side coverage - [Istanbul](http://gotwarlost.github.io/istanbul/)
 * Client-side dependency manager - [Bower](http://bower.io/)
 * API documentation - [Swagger UI](https://github.com/wordnik/swagger-ui)
 * API testing - [Supertest](https://github.com/visionmedia/supertest)
+* UI testing - [DalekJS](http://dalekjs.com/)
 
 ### Installation
 
@@ -19,10 +21,9 @@ A simple NodeJS app, that I am using as a playground to try out and new technolo
 * Run `npm install` and `bower install` for dependencies
 * Start app by running `gulp`
 
-### Useful Gulp Tasks
+### Gulp Tasks
 
-* `gulp build` - to bundle javascript and change config setting to `production`
-* `gulp client-tests` - to run client-side unit tests
+* see `gulpfile.js` for a list of available tasks
 
 ### API Documentation
 

@@ -49,6 +49,10 @@ gulp.task('api-tests', shell.task([
     './node_modules/mocha/bin/_mocha --reporter=spec --recursive tests/api/**'
 ]));
 
+gulp.task('ui-tests', shell.task([
+    './node_modules/dalek-cli/bin/cmd.js tests/ui/*js'
+]));
+
 gulp.task('jshint', function() {
     gulp.src([
             'public/js/**',
