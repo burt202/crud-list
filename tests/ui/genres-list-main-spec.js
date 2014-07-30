@@ -9,13 +9,14 @@ module.exports = {
         });
     },
 
-    'Genres List': function (test) {
+    'Genres List Main': function (test) {
         var menu = '#nav';
         var genresMenuLink = '#nav li.genres a';
         var genresListItems = '#genres-list li';
         var genresListEmptyItem = '#genres-list li.empty-row';
         var genresCountDisplay = '#genres-list-options span';
         var newButton = '#show-add-genre-form';
+        var formTitle = '#genre-form-container h2';
         var genreForm = '#genre-form';
         var cancelButton = '#cancel-btn';
         var addButton = '#add-genre-btn';
@@ -28,21 +29,22 @@ module.exports = {
 
         test
             .open('http://' + config.domain + ':' + config.port)
+            .waitForElement(menu)
+            .click(genresMenuLink)
 
             // EMPTY LIST
 
-            .waitForElement(menu)
-            .click(genresMenuLink)
             .assert.numberOfElements(genresListItems, 1, 'List has 1 item')
             .assert.exists(genresListEmptyItem, 'List item is empty row')
             .assert.text(genresListEmptyItem, 'No items', 'Empty message is shown')
             .assert.text(genresCountDisplay, '0 genres', 'Genre count correct')
 
-            // VALIDATION
+            // ADD VALIDATION
 
             .click(newButton)
             .wait(401)
             .assert.visible(genreForm, 'Form is visible')
+            .assert.text(formTitle, 'Add A Genre', 'Form title is correct')
             .click(cancelButton)
             .wait(401)
             .assert.doesntExist(genreForm, 'Form is not visible')
@@ -61,7 +63,7 @@ module.exports = {
             .assert.chain()
                 .query(notification)
                     .exists('Notification shown')
-                    .text('Genre Added')
+                    .text('Genre Added', 'Notification text is correct')
                     .attr('class').to.contain('notification-success', 'Notification is a success message')
                 .end()
             .end()
