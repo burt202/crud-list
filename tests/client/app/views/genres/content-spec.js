@@ -23,7 +23,7 @@ describe('Genre Content', function() {
 			});
 			content.render();
 
-			expect(content.$(content.itemViewContainer).html()).to.equal('<li>No items</li>');
+			expect(content.$(content.itemViewContainer).html()).to.equal('<li class="empty-row">No items</li>');
 		});
 	});
 

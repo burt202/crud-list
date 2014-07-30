@@ -34,7 +34,7 @@ define([
 				});
 
 			if ($('.notification').length >= 1) {
-				return;
+				$('.notification').remove();
 			}
 
 			removeAfter = removeAfter || 5000;

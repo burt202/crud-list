@@ -91,10 +91,6 @@ define([
 		};
 
 		this.deleteGenre = function (model) {
-			if (!confirm('Are you sure you want to delete ' + model.get('name') + '?')) {
-				return;
-			}
-
 			if (genresFormView) {
 				this.hideForm();
 			}
