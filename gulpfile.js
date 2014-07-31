@@ -1,6 +1,4 @@
-var fs = require('fs'),
-    config = JSON.parse(fs.readFileSync(__dirname + '/configs/app.json', 'utf8')),
-    gulp = require('gulp'),
+var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     less = require('gulp-less'),
     minifyCSS = require('gulp-minify-css'),
@@ -92,5 +90,5 @@ gulp.task('type-development', function() {
 });
 
 gulp.task('bundle-js', shell.task([
-    'node public' + config.rjsPath + ' -o public/build/build.json'
+    'node public/bower_components/rjs/dist/r.js -o public/build/build.json'
 ]));
