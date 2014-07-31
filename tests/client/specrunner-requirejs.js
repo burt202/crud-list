@@ -1,4 +1,15 @@
-var requirejsConfig = require('../../public/js/config.js');
+var requirejsConfig;
+
+/* global requirejs */
+/* jshint -W020 */
+requirejs = {
+	config: function (options) {
+		requirejsConfig = options;
+	}
+};
+
+require('../../public/js/config.js');
+requirejs = null;
 
 requirejsConfig.baseUrl = 'public/bower_components';
 requirejsConfig.suppress = { nodeShim: true };

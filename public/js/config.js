@@ -1,5 +1,5 @@
-/* jshint -W079, unused:false */
-var requireJsConfig = {
+/* global requirejs */
+requirejs.config({
 	baseUrl: 'bower_components',
 	paths: {
 		app: '../js/app',
@@ -23,9 +23,4 @@ var requireJsConfig = {
 			exports: 'Backbone.Marionette'
 		}
 	}
-};
-
-// for nodeJS require when used in the test runners
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-	module.exports = requireJsConfig;
-}
+});
