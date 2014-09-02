@@ -3,13 +3,13 @@
   "version": "0.3.0",
   "private": true,
   "dependencies": {
-    "backbone": "latest",
-    "jquery": "latest",
-    "marionette": "latest",
-    "requirejs": "latest",
-    "requirejs-text": "latest",
-    "underscore": "latest",
-    "swagger-ui": "latest",
+    "backbone": "1.1.2",
+    "jquery": "2.1.1",
+    "marionette": "1.8.8",
+    "requirejs": "2.1.14",
+    "requirejs-text": "2.0.12",
+    "underscore": "1.6.0",
+    "swagger-ui": "2.0.17",
     "rjs": "2.1.14"
   }
 }
