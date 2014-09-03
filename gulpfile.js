@@ -1,16 +1,15 @@
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     less = require('gulp-less'),
-    minifyCSS = require('gulp-minify-css'),
     rename = require('gulp-rename'),
     nodemon = require('gulp-nodemon'),
     jeditor = require('gulp-json-editor'),
     shell = require('gulp-shell');
 
-gulp.task('default', function() {
+gulp.task('default', function () {
     gulp.run('init');
 
-    gulp.watch('public/css/**', function() {
+    gulp.watch('public/css/**', function () {
         gulp.run('compile-less');
     });
 });
@@ -51,7 +50,7 @@ gulp.task('ui-tests', shell.task([
     './node_modules/dalek-cli/bin/cmd.js tests/ui/*js'
 ]));
 
-gulp.task('jshint', function() {
+gulp.task('jshint', function () {
     gulp.src([
             'public/js/**',
             'server/**',
@@ -61,28 +60,28 @@ gulp.task('jshint', function() {
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('compile-less', function() {
+gulp.task('compile-less', function () {
     gulp.src('public/css/imports.less')
         .pipe(less({
-            paths: ['public/css/']
+            paths: ['public/css/'],
+            compress: true
         }))
-        .pipe(minifyCSS())
         .pipe(rename('combined.css'))
         .pipe(gulp.dest('public/build/'));
 });
 
-gulp.task('type-production', function() {
+gulp.task('type-production', function () {
     gulp.src('configs/app.json')
-        .pipe(jeditor(function(json) {
+        .pipe(jeditor(function (json) {
             json.type = 'production';
             return json;
         }))
         .pipe(gulp.dest('configs/'));
 });
 
-gulp.task('type-development', function() {
+gulp.task('type-development', function () {
     gulp.src('configs/app.json')
-        .pipe(jeditor(function(json) {
+        .pipe(jeditor(function (json) {
             json.type = 'development';
             return json;
         }))
