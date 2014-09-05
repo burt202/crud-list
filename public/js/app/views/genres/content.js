@@ -8,8 +8,8 @@ define([
 
 	return Marionette.CompositeView.extend({
 		template: _.template(tpl),
-		itemViewContainer: '#genres-list',
-		itemView: GenresListItemView,
+		childViewContainer: '#genres-list',
+		childView: GenresListItemView,
 
 		ui: {
 			newButton: '#show-add-genre-form'
