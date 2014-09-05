@@ -14,7 +14,7 @@ database.connect(['genres'])
             apiRoutes = require(__dirname + '/server/api-routes')(config, database);
 
         /*jshint -W030 */
-        app.use(bodyParser()),
+        app.use(bodyParser.json()),
         app.use(express.static(__dirname + '/public'));
 
         if (config.type === 'development') {

@@ -15,5 +15,5 @@
 
 ### To Do
 
-* update express, body-parser, gulp, gulp-util, marionette
-* introduce promises for mongo access
+* update gulp, gulp-util, gulp-rename, marionette
+* introduce promises where neccessary

@@ -3,10 +3,10 @@
   "version": "0.3.0",
   "private": true,
   "dependencies": {
-    "express": "4.4.3",
+    "express": "4.8.8",
     "swig": "1.4.2",
     "mongodb": "1.4.9",
-    "body-parser": "1.0.1",
+    "body-parser": "1.7.0",
     "q": "1.0.1",
     "underscore": "1.7.0"
   },
