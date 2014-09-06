@@ -1,10 +1,9 @@
 define([
-	'jquery',
 	'underscore',
 	'marionette',
 	'app/views/genres/vent',
 	'text!templates/genres/form.html'
-], function ($, _, Marionette, Vent, tpl) {
+], function (_, Marionette, Vent, tpl) {
 
 	return Marionette.ItemView.extend({
 		id: 'genre-form-container',

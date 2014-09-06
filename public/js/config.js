@@ -8,7 +8,8 @@ requirejs.config({
 		marionette: 'marionette/lib/backbone.marionette',
 		jquery: 'jquery/dist/jquery',
 		text: 'requirejs-text/text',
-		underscore: 'underscore/underscore'
+		underscore: 'underscore/underscore',
+		q: 'q/q'
 	},
 	shim: {
 		underscore: {

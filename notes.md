@@ -15,5 +15,6 @@
 
 ### To Do
 
-* update gulp, gulp-util, gulp-rename, marionette
-* introduce promises where neccessary
+* update gulp, gulp-util, gulp-rename
+* tabs indents to spaces
+* initial events

@@ -1,9 +1,11 @@
 define([
+    'q',
     'app/views/home/content'
-], function (HomeContView) {
+], function (q, HomeContView) {
 
-    return function (callback) {
-        var homeContView = new HomeContView();
-        callback(homeContView);
+    return function () {
+        this.start = function () {
+            return q(new HomeContView());
+        };
     };
 });

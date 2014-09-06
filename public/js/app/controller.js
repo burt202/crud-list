@@ -1,26 +1,26 @@
 define([
-	'app/app',
-	'app/views/home/main',
-	'app/views/genres/main'
+    'app/app',
+    'app/views/home/main',
+    'app/views/genres/main'
 ], function (App, HomeMain, GenresMain) {
 
-	return {
-		home: function () {
-			App.navigation.currentView.setActive('home');
+    return {
+        home: function () {
+            App.navigation.currentView.setActive('home');
 
-			var homeMain;
-			homeMain = new HomeMain(function (view) {
-				App.content.show(view);
-			});
-		},
+            var homeMain = new HomeMain();
+            homeMain.start().then(function (view) {
+                App.content.show(view);
+            });
+        },
 
-		genres: function () {
-			App.navigation.currentView.setActive('genres');
+        genres: function () {
+            App.navigation.currentView.setActive('genres');
 
-			var genresMain;
-			genresMain = new GenresMain(function (view) {
-				App.content.show(view);
-			});
-		}
-	};
+            var genresMain = new GenresMain();
+            genresMain.start().then(function (view) {
+                App.content.show(view);
+            });
+        }
+    };
 });
