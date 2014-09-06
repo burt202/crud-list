@@ -3,9 +3,9 @@ var requirejsConfig;
 /* global requirejs */
 /* jshint -W020 */
 requirejs = {
-	config: function (options) {
-		requirejsConfig = options;
-	}
+    config: function (options) {
+        requirejsConfig = options;
+    }
 };
 
 require('../../public/js/config.js');

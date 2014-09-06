@@ -1,9 +1,9 @@
 define([
-	'backbone'
+    'backbone'
 ], function (Backbone) {
 
-	return Backbone.Model.extend({
-		idAttribute: '_id',
-		urlRoot: '/api/genres/'
-	});
+    return Backbone.Model.extend({
+        idAttribute: '_id',
+        urlRoot: '/api/genres/'
+    });
 });

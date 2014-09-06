@@ -1,21 +1,21 @@
 define([
-	'marionette',
-	'backbone',
-	'app/views/shared/navigation'
+    'marionette',
+    'backbone',
+    'app/views/shared/navigation'
 ], function (Marionette, Backbone, NavigationView) {
 
-	var app = new Marionette.Application(),
-		navigation = new NavigationView();
+    var app = new Marionette.Application(),
+        navigation = new NavigationView();
 
-	app.addRegions({
-		navigation: '#navigation',
-		content: '#content'
-	});
+    app.addRegions({
+        navigation: '#navigation',
+        content: '#content'
+    });
 
-	app.addInitializer(function () {
-		app.navigation.show(navigation);
-		Backbone.history.start();
-	});
+    app.addInitializer(function () {
+        app.navigation.show(navigation);
+        Backbone.history.start();
+    });
 
-	return app;
+    return app;
 });

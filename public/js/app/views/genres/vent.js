@@ -1,7 +1,7 @@
 define([
-	'underscore',
-	'backbone'
+    'underscore',
+    'backbone'
 ], function (_, Backbone) {
 
-	return _.extend({}, Backbone.Events);
+    return _.extend({}, Backbone.Events);
 });

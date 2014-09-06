@@ -16,5 +16,7 @@
 ### To Do
 
 * update gulp, gulp-util, gulp-rename
-* tabs indents to spaces
+* readme update - gulp
+* on -> listenTo
 * initial events
+* mongo promises
