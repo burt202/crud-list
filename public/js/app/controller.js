@@ -9,18 +9,22 @@ define([
             App.navigation.currentView.setActive('home');
 
             var homeMain = new HomeMain();
-            homeMain.start().then(function (view) {
-                App.content.show(view);
-            });
+            homeMain.start()
+                .then(function (view) {
+                    App.content.show(view);
+                })
+                .done();
         },
 
         genres: function () {
             App.navigation.currentView.setActive('genres');
 
             var genresMain = new GenresMain();
-            genresMain.start().then(function (view) {
-                App.content.show(view);
-            });
+            genresMain.start()
+                .then(function (view) {
+                    App.content.show(view);
+                })
+                .done();
         }
     };
 });

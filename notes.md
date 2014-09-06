@@ -19,4 +19,3 @@
 * readme update - gulp
 * on -> listenTo
 * initial events
-* mongo promises

@@ -9,14 +9,16 @@ var GenreController = function (db) {
 
         if (errors.length > 0) {
             res.set('Content-Type', 'application/json');
-            res.send(400, {
+            res.status(400).send({
                 errors: errors
             });
         } else {
-            this.genresService.get(id, function (data) {
-                res.set('Content-Type', 'application/json');
-                res.send(200, data);
-            });
+            this.genresService.get(id)
+                .then(function (data) {
+                    res.set('Content-Type', 'application/json');
+                    res.status(200).send(data);
+                })
+                .done();
         }
     };
 
@@ -29,14 +31,16 @@ var GenreController = function (db) {
 
         if (errors.length > 0) {
             res.set('Content-Type', 'application/json');
-            res.send(400, {
+            res.status(400).send({
                 errors: errors
             });
         } else {
-            this.genresService.update(id, data, function (data) {
-                res.set('Content-Type', 'application/json');
-                res.send(200, data);
-            });
+            this.genresService.update(id, data)
+                .then(function (data) {
+                    res.set('Content-Type', 'application/json');
+                    res.status(200).send(data);
+                })
+                .done();
         }
     };
 
@@ -46,14 +50,16 @@ var GenreController = function (db) {
 
         if (errors.length > 0) {
             res.set('Content-Type', 'application/json');
-            res.send(400, {
+            res.status(400).send({
                 errors: errors
             });
         } else {
-            this.genresService.remove(id, function () {
-                res.set('Content-Type', 'application/json');
-                res.send(200, {});
-            });
+            this.genresService.remove(id)
+                .then(function () {
+                    res.set('Content-Type', 'application/json');
+                    res.status(200).send({});
+                })
+                .done();
         }
     };
 };

@@ -4,10 +4,12 @@ var GenresController = function (db) {
     this.genresService = new GenresService(db);
 
     this.getAction = function (req, res) {
-        this.genresService.getAll(function (data) {
-            res.set('Content-Type', 'application/json');
-            res.send(200, data);
-        });
+        this.genresService.getAll()
+            .then(function (data) {
+                res.set('Content-Type', 'application/json');
+                res.status(200).send(data);
+            })
+            .done();
     };
 
     this.postAction = function (req, res) {
@@ -18,14 +20,16 @@ var GenresController = function (db) {
 
         if (errors.length > 0) {
             res.set('Content-Type', 'application/json');
-            res.send(400, {
+            res.status(400).send({
                 errors: errors
             });
         } else {
-            this.genresService.add(data, function (data) {
-                res.set('Content-Type', 'application/json');
-                res.send(201, data);
-            });
+            this.genresService.add(data)
+                .then(function (data) {
+                    res.set('Content-Type', 'application/json');
+                    res.status(201).send(data);
+                })
+                .done();
         }
     };
 };
