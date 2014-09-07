@@ -6,15 +6,13 @@ var gulp = require('gulp'),
     jeditor = require('gulp-json-editor'),
     shell = require('gulp-shell');
 
-gulp.task('default', function () {
-    gulp.run('init');
+gulp.task('default', ['watch', 'nodemon']);
 
-    gulp.watch('public/css/**', function () {
-        gulp.run('compile-less');
-    });
+gulp.task('watch', function () {
+    gulp.watch('public/css/**', ['compile-less']);
 });
 
-gulp.task('init', function () {
+gulp.task('nodemon', function () {
     nodemon({
         script: 'app.js',
         ext: 'js json'
@@ -22,13 +20,9 @@ gulp.task('init', function () {
     .on('change', ['jshint']);
 });
 
-gulp.task('build', function () {
-    gulp.run('compile-less', 'bundle-js', 'type-production');
-});
+gulp.task('build', ['compile-less', 'bundle-js', 'type-production']);
 
-gulp.task('unbuild', function () {
-    gulp.run('type-development');
-});
+gulp.task('unbuild', ['type-development']);
 
 gulp.task('coverage', function () {
     gulp.src('')

@@ -15,5 +15,4 @@
 
 ### To Do
 
-* update gulp, gulp-util, gulp-rename
-* readme update - gulp
+no items

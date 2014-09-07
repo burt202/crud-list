@@ -19,6 +19,7 @@ A simple NodeJS app, that I am using as a playground to try out and new technolo
 
 * Make sure NodeJS and MongoDB are installed
 * Run `npm install` and `bower install` for dependencies
+* install gulp globally `sudo npm install -g gulp`
 * Start app by running `gulp`
 
 ### Gulp Tasks
