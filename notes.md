@@ -17,5 +17,3 @@
 
 * update gulp, gulp-util, gulp-rename
 * readme update - gulp
-* on -> listenTo
-* initial events

@@ -27,17 +27,25 @@ describe('Genre Content', function() {
         });
     });
 
-    describe('Template Data', function() {
-        it('should return correctly', function() {
+    describe('Total Span', function() {
+        it('should return correctly for a collection of 2 items', function() {
             var content = new Content({
-                collection: new Backbone.Collection([{}, {}])
-            }),
-            actual = content.serializeData(),
-            expected = {
-                genreCount: 2
-            };
+                collection: new Backbone.Collection([{name: 'foo'}, {name: 'bar'}])
+            });
 
-            expect(actual).to.deep.equal(expected);
+            content.render();
+
+            expect(content.ui.totalSpan.html()).to.equal('2 genres');
+        });
+
+        it('should return correctly for a collection of 1 item', function() {
+            var content = new Content({
+                collection: new Backbone.Collection([{name: 'foo'}])
+            });
+
+            content.render();
+
+            expect(content.ui.totalSpan.html()).to.equal('1 genre');
         });
     });
 

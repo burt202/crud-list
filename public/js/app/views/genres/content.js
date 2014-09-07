@@ -12,7 +12,8 @@ define([
         childView: GenresListItemView,
 
         ui: {
-            newButton: '#show-add-genre-form'
+            newButton: '#show-add-genre-form',
+            totalSpan: '#genres-list-options span'
         },
 
         events: {
@@ -20,12 +21,8 @@ define([
         },
 
         collectionEvents: {
-            'add remove': 'render'
+            'add remove': 'updateTotalSpan'
         },
-
-        // override _initialEvents function to stop the binding of default marionette collectionView events,
-        // collectionEvents declared above is all we need here
-        _initialEvents: function () {},
 
         emptyView: Marionette.ItemView.extend({
             tagName: 'li',
@@ -35,10 +32,14 @@ define([
             }
         }),
 
-        serializeData: function () {
-            return {
-                genreCount: this.collection.length
-            };
+        onRender: function () {
+            this.updateTotalSpan();
+        },
+
+        updateTotalSpan: function () {
+            var genreCount = this.collection.length;
+            var grammar = (genreCount === 1) ? 'genre' : 'genres';
+            this.ui.totalSpan.html(genreCount + ' ' + grammar);
         },
 
         newButtonEvent: function (e) {
