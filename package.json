@@ -28,6 +28,7 @@
     "istanbul": "0.3.0",
     "sinon": "1.10.3",
     "dalek-cli": "0.0.4",
-    "dalekjs": "0.0.8"
+    "dalekjs": "0.0.8",
+    "gulp-minify-css": "0.3.11"
   }
 }

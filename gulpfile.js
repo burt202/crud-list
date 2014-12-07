@@ -4,12 +4,13 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     nodemon = require('gulp-nodemon'),
     jeditor = require('gulp-json-editor'),
-    shell = require('gulp-shell');
+    shell = require('gulp-shell'),
+    minifyCSS = require('gulp-minify-css');
 
 gulp.task('default', ['watch', 'nodemon']);
 
 gulp.task('watch', function () {
-    gulp.watch('public/css/**', ['compile-less']);
+    gulp.watch('public/css/**', ['less']);
 });
 
 gulp.task('nodemon', function () {
@@ -20,7 +21,7 @@ gulp.task('nodemon', function () {
     .on('change', ['jshint']);
 });
 
-gulp.task('build', ['compile-less', 'bundle-js', 'type-production']);
+gulp.task('build', ['less', 'bundle-js', 'type-production']);
 
 gulp.task('unbuild', ['type-development']);
 
@@ -54,13 +55,21 @@ gulp.task('jshint', function () {
         .pipe(jshint.reporter('jshint-stylish'));
 });
 
+gulp.task('less', ['compile-less', 'minify-less']);
+
 gulp.task('compile-less', function () {
     gulp.src('public/css/imports.less')
         .pipe(less({
-            paths: ['public/css/'],
-            compress: true
+            paths: ['public/css/']
         }))
         .pipe(rename('combined.css'))
+        .pipe(gulp.dest('public/build/'));
+});
+
+gulp.task('minify-less', ['compile-less'], function () {
+    gulp.src('public/build/combined.css')
+        .pipe(minifyCSS())
+        .pipe(rename('combined.min.css'))
         .pipe(gulp.dest('public/build/'));
 });
 

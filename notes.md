@@ -15,4 +15,5 @@
 
 ### To Do
 
-no items
+* dalek tests
+* genres main -> layout
