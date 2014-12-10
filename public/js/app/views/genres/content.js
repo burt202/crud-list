@@ -8,6 +8,10 @@ define([
 
     return Marionette.CompositeView.extend({
         template: _.template(tpl),
+        attributes: {
+            class: 'genres-content'
+        },
+
         childViewContainer: '#genres-list',
         childView: GenresListItemView,
 
