@@ -1,0 +1,13 @@
+{
+  "feature": "tests/ui/features",
+  "require": [
+    "tests/ui/steps",
+    "tests/ui/widgets"
+  ],
+  "format": "pioneerformat.js",
+  "driver": "chrome",
+  "error_formatter": "errorformat.js",
+  "preventReload": true,
+  "coffee": false,
+  "verbose": true
+}

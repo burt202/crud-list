@@ -13,7 +13,3 @@
 * api tests
 * ui tests
 
-### To Do
-
-* dalek tests
-* genres main -> layout

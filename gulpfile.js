@@ -42,14 +42,14 @@ gulp.task('api-tests', shell.task([
 ]));
 
 gulp.task('ui-tests', shell.task([
-    './node_modules/dalek-cli/bin/cmd.js tests/ui/*js'
+    './node_modules/pioneer/bin/pioneer'
 ]));
 
 gulp.task('jshint', function () {
     gulp.src([
-            'public/js/**',
-            'server/**',
-            'tests/**'
+            'public/js/**/*.js',
+            'server/**/*.js',
+            'tests/**/*.js'
         ])
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter('jshint-stylish'));
