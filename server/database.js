@@ -1,3 +1,5 @@
+'use strict';
+
 var q = require('q'),
     MongoClient = require('mongodb').MongoClient,
     _ = require('underscore');

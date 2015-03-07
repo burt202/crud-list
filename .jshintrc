@@ -3,7 +3,7 @@
 
     "bitwise"       : true,
     "camelcase"     : true,
-    "curly"         : true,
+    "curly"         : false,
     "eqeqeq"        : true,
     "es3"           : false,
     "forin"         : true,
@@ -20,7 +20,7 @@
     "quotmark"      : true,
     "undef"         : true,
     "unused"        : true,
-    "strict"        : false,
+    "strict"        : true,
     "trailing"      : true,
     "maxparams"     : false,
     "maxdepth"      : false,

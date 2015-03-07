@@ -1,3 +1,5 @@
+'use strict';
+
 var jQuery = require('../../public/bower_components/jquery/dist/jquery');
 var jsdom = require('jsdom');
 

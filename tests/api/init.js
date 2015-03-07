@@ -1,3 +1,5 @@
+'use strict';
+
 var fs = require('fs'),
     q = require('q'),
     Database = require('../../server/database'),

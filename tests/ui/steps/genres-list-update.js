@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function () {
     this.When(/^I update the genre with row index (\d+)$/, function (index) {
         var genresList = new this.Widgets.GenresList();

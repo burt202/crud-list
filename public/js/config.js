@@ -1,3 +1,5 @@
+'use strict';
+
 /* global requirejs */
 requirejs.config({
     baseUrl: 'bower_components',

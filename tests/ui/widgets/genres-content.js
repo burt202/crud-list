@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function () {
 
   this.Widgets.GenresContent = this.Widget.extend({

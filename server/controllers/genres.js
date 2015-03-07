@@ -1,3 +1,5 @@
+'use strict';
+
 var GenresService = require(__dirname + '/../services/genres');
 
 var GenresController = function (db) {

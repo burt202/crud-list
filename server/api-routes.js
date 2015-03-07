@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var ApiRoutes = express.Router();
 var controllerDir = __dirname + '/controllers/';

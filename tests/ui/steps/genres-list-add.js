@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function () {
   this.When(/^I click the new button$/, function () {
     this.driver.sleep(500);

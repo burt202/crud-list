@@ -1,3 +1,5 @@
+'use strict';
+
 var swig = require('swig'),
     fs = require('fs');
 
