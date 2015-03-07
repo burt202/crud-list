@@ -1,5 +1,4 @@
-'use strict';
-
+/*jshint strict: false */
 var requirejsConfig;
 
 /* global requirejs */

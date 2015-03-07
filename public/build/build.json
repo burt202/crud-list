@@ -3,5 +3,8 @@
     "baseUrl": "../bower_components",
     "name": "../js/start",
     "out": "combined.js",
-    "wrapShim": true
+    "wrapShim": true,
+    "include": [
+        "requirejs/require"
+    ]
 }
