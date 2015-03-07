@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     less = require('gulp-less'),
@@ -26,7 +28,7 @@ gulp.task('build', ['less', 'bundle-js', 'type-production']);
 gulp.task('unbuild', ['type-development']);
 
 gulp.task('coverage', function () {
-    gulp.src('')
+    return gulp.src('')
         .pipe(shell('./node_modules/istanbul/lib/cli.js cover -x **/node_modules/** -x **/public/bower_components/** --hook-run-in-context --report html --print both ./node_modules/mocha/bin/_mocha -- --recursive tests/client/app/'))
         .on('finish', function () {
             console.log('Breakdown: file://' + __dirname + '/coverage/index.html');
@@ -46,7 +48,7 @@ gulp.task('ui-tests', shell.task([
 ]));
 
 gulp.task('jshint', function () {
-    gulp.src([
+    return gulp.src([
             'public/js/**/*.js',
             'server/**/*.js',
             'tests/**/*.js'
@@ -58,7 +60,7 @@ gulp.task('jshint', function () {
 gulp.task('less', ['compile-less', 'minify-less']);
 
 gulp.task('compile-less', function () {
-    gulp.src('public/css/imports.less')
+    return gulp.src('public/css/imports.less')
         .pipe(less({
             paths: ['public/css/']
         }))
@@ -67,14 +69,14 @@ gulp.task('compile-less', function () {
 });
 
 gulp.task('minify-less', ['compile-less'], function () {
-    gulp.src('public/build/combined.css')
+    return gulp.src('public/build/combined.css')
         .pipe(minifyCSS())
         .pipe(rename('combined.min.css'))
         .pipe(gulp.dest('public/build/'));
 });
 
 gulp.task('type-production', function () {
-    gulp.src('configs/app.json')
+    return gulp.src('configs/app.json')
         .pipe(jeditor(function (json) {
             json.type = 'production';
             return json;
@@ -83,7 +85,7 @@ gulp.task('type-production', function () {
 });
 
 gulp.task('type-development', function () {
-    gulp.src('configs/app.json')
+    return gulp.src('configs/app.json')
         .pipe(jeditor(function (json) {
             json.type = 'development';
             return json;
