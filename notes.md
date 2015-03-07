@@ -1,4 +1,10 @@
-## Notes
+### Notes
+
+When mongo doesnt start run the following
+
+* sudo rm /var/lib/mongodb/mongod.lock
+* sudo service mongodb start
+* mongo
 
 ### Testing Steps
 
@@ -12,3 +18,5 @@
 * unit tests
 * api tests
 * ui tests
+
+### ToDo
