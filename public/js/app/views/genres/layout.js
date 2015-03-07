@@ -58,21 +58,20 @@ define([
 
         newGenre: function () {
             var model = new GenreModel({
-                action: 'add',
-                title: 'Add A Genre',
                 name: ''
             });
 
-            this.showForm(model);
+            this.showForm(model, {
+                title: 'Add A Genre',
+                action: 'add'
+            });
         },
 
         editGenre: function (model) {
-            model.set({
-                action: 'edit',
-                title: 'Update ' + model.get('name')
+            this.showForm(model, {
+                title: 'Update ' + model.get('name'),
+                action: 'edit'
             });
-
-            this.showForm(model);
         },
 
         addGenre: function (model, properties, formElement) {
@@ -103,9 +102,7 @@ define([
         },
 
         deleteGenre: function (model) {
-            if (this.genresFormView) {
-                this.hideForm();
-            }
+            if (this.genresFormView) this.hideForm();
 
             model.destroy({
                 success: function () {
@@ -114,14 +111,12 @@ define([
             });
         },
 
-        showForm: function (model) {
-            if (this.genresFormView) {
-                this.genresFormView.remove();
-            }
+        showForm: function (model, viewOptions) {
+            if (this.genresFormView) this.genresFormView.remove();
 
-            this.genresFormView = new GenresFormView({
+            this.genresFormView = new GenresFormView(_.extend({
                 model: model
-            });
+            }, viewOptions));
 
             $('#content').prepend(this.genresFormView.render().el);
             this.genresFormView.$el.slideDown(400, function () {

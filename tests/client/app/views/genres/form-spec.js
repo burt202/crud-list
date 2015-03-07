@@ -14,10 +14,10 @@ describe('Genre Form', function() {
     beforeEach(function() {
         form = new Form({
             model: new Backbone.Model({
-                action: 'action',
-                title: 'title',
                 name: 'name'
-            })
+            }),
+            action: 'action',
+            title: 'title'
         });
     });
 

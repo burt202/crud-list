@@ -24,6 +24,19 @@ define([
             'click @ui.cancelButton': 'cancelButtonEvent'
         },
 
+        initialize: function (options) {
+            this.title = options.title;
+            this.action = options.action;
+        },
+
+        serializeData: function () {
+            return {
+                title: this.title,
+                action: this.action,
+                name: this.model.get('name')
+            };
+        },
+
         addButtonEvent: function (e) {
             e.preventDefault();
             this.addButton();
